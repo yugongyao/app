@@ -1,22 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import homeRoutes from './home-routes'
+import topicRoutes from './topic-routes'
+import issueRoutes from './issue-routes'
+import informRoutes from './inform-routes'
+import mineRoutes from './mine-routes'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    redirect: '/home'
+  },
+  homeRoutes,//首页
+  topicRoutes,//话题
+  issueRoutes,//发布
+  informRoutes,//通知
+  mineRoutes,//我的
+  {
+    // 用户详情
+    path: '/userDetail',
+    component: ()=>import('../pages/home/userDetail/UserDetail')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    // 动态详情
+    path: '/dynamic',
+    component: ()=>import('../pages/home/dynamic/Dynamic')
+  },
+  {
+    // 登录
+    path: '/login',
+    component: ()=>import('../pages/mine/login/Login')
+  },
+  {
+    // 注册
+    path: '/regiester',
+    component: ()=>import('../pages/mine/regiester/Regiester')
+  },
+  {
+    path: '/404',
+    component: ()=>import('../pages/common/not-find/NotFind')
+  },
+  {
+    path: '**',
+    redirect: '/404'
   }
 ]
 

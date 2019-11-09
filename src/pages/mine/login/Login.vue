@@ -1,0 +1,15 @@
+<template>
+<div class="page" id="login">
+  <h1>登录</h1>
+</div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
