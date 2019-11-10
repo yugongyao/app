@@ -1,6 +1,9 @@
 # app
 
-## Project setup
+
+## Client is the customer service terminal. Please do the following before the user:
+
+### Project setup
 ```
 npm install
 ```
@@ -15,5 +18,14 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Sever is a test server. Please do the following before using it:
+
+### Project setup
+```
+npm install
+```
+
+### Start server
+```
+node server.js
+```
