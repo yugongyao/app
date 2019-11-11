@@ -7,7 +7,7 @@
       <router-link class="tab-item" to="/inform">通知</router-link>
       <router-link class="tab-item" to="/mine">我的</router-link>
     </div>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
