@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    
-    <router-view/>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <tab-bar></tab-bar>
   </div>
 </template>
 
-<style lang="scss">
-#app{
-  .tab-bar{
-    border: solid #ddd 2px;
-    .tab-item{
-      background: #ccc;
-      color: #333;
-    }
-    .router-link-active{
-      color: red;
-    }
-  }
+<script>
+import TabBar from './components/tab-bar'
+export default {
+  components: {
+    [TabBar.name]: TabBar,
+  },
 }
+
+</script>
+
+<style lang="scss">
+
 </style>
