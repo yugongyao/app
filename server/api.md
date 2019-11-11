@@ -2,18 +2,17 @@
 
 #### 发送验证码
 
-**method:** post
+**method:** get
 
 **url:** /api/user/send_code
 
-**参数:** tel   
-
+**参数:** email
 **返回值:**
 
 ```json
 {
-	message: 'ok',
-  code: 0,
+	msg: '验证码发送成功 || 验证码发送失败 || 邮箱为空'
+  code: 0 || -1 || -2,
   data: null
 }
 ```
@@ -26,14 +25,14 @@
 
 **url:** /api/user/regiester
 
-**参数:** tel   password
+**参数:** username email password  code
 
 **返回值:**
 
 ```json
 {
-	message: 'ok',
-  code: 0,
+	msg: '注册成功 || 验证码错误 || 注册失败',
+  code: 0 || -1 || -2,
   data: null
 }
 ```
@@ -46,14 +45,14 @@
 
 **url:** /api/user/login
 
-**参数:** tel   type('code', 'password' )  value   
+**参数:** email password   
 
 **返回值:**
 
 ```json
 {
-	message: 'ok',
-  code: 0,
+	msg: 'ok || 用户名或密码错误 || 用户名不存在 || 数据库错误请重试',
+  status: 0 || -1 || -2 || -3,
   data: null
 }
 ```
@@ -70,15 +69,15 @@
 
 ```json
 {
-	message: 'ok',
-  code: 0,
+	msg: '没过期 || 已过期',
+  status: 0 || -1,
   data: null
 }
 ```
 
 
 
-登录退出
+### 登出
 
 **method:** get
 
@@ -90,18 +89,11 @@
 
 ```json
 {
-	message: 'ok',
-  code: 0,
+	msg: 'ok',
+  status: 0,
   data: null
 }
 ```
-
-
-
-
-
-
-
 
 
 
