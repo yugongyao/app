@@ -21,17 +21,25 @@ export default {
   methods: {}
 };
 </script>
-
 <style lang="scss">
+
 .content {
   position: absolute;
-  top: 44px;
+  top: 45px;
   bottom: 49px;
   width: 100%;
   &.noBar {
     bottom: 0;
     z-index: 200;
   }
+}
+span.van-dropdown-menu__title{
+  font-size: 13px!important;
+  color:#1989fa;
+}
+div.van-cell__title{
+  text-indent: 17px;
+  font-size: 14px;
 }
 
 </style>
