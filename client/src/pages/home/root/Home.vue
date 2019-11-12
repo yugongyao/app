@@ -19,11 +19,11 @@ export default {
   data(){
     return {
       bannerList:[
-        {id:1,picUrl:`../../../assets/banner1.jpg`},
-        {id:2,picUrl:`../../../assets/banner2.jpg`},
-        {id:3,picUrl:`../../../assets/banner3.jpeg`},
-        {id:4,picUrl:`../../../assets/banner4.jpg`},
-        {id:5,picUrl:`../../../assets/banner5.jpg`},
+        {id:1,picUrl:`./assets/banner1.jpg`},
+        {id:2,picUrl:`./assets/banner2.jpg`},
+        {id:3,picUrl:`./assets/banner3.jpeg`},
+        {id:4,picUrl:`./assets/banner4.jpg`},
+        {id:5,picUrl:`./assets/banner5.jpg`},
       ]
     }
   },
