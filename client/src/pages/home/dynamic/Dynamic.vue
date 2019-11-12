@@ -1,6 +1,6 @@
 <template>
   <div class="page" id="dynamic">
-    <h1>动态dynamic</h1>
+    
   </div>
 </template>
 
@@ -10,6 +10,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+#dynamic{
+  width: 100%;
+ 
+}
 </style>
