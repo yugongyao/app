@@ -8,7 +8,7 @@ var data = Mock.mock({
             'username': '@word',
             'icon': '../public/images/icon-default.png',
             'id|+1': 1,
-            'text': '@sentence',
+            'text': '@csentence',
             'picArr|1-4': ['@image(50x50)'],
             'comments|1-10': 5,
             'likes|1-50': 5
@@ -16,6 +16,6 @@ var data = Mock.mock({
     ]
 })
 
-console.log(data);
+// console.log(data.data[1].picArr);
 
 module.exports = data;

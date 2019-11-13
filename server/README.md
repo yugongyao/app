@@ -1,6 +1,6 @@
 ## 用户
 
-#### 发送验证码
+### 发送验证码
 
 **method:** get
 
@@ -19,7 +19,7 @@
 
 
 
-#### 注册
+### 注册
 
 **method:** post
 
@@ -39,7 +39,7 @@
 
 
 
-#### 登录
+### 登录
 
 **method:** post
 
@@ -57,7 +57,7 @@
 }
 ```
 
-#### 检查登录是否过期
+### 检查登录是否过期
 
 **method:** get
 
@@ -96,4 +96,29 @@
 ```
 
 
+### 获取首屏动态
 
+**method:** get
+
+**url:** /api/home/moment_list
+
+**参数:** 无
+
+**返回值:**
+
+```json
+{
+	msg: 'ok',
+  status: 0,
+  data: [
+    十个
+      { username: 'clheebe',
+       icon: '../public/images/icon-default.png',
+       id: 1,
+       text: '期学千二公采一内去空东低四接拉示求。',
+       picArr: 数组内有随机1-4个图片链接 [ 'http://dummyimage.com/50x50', 'http://dummyimage.com/50x50' ],
+       comments: 1-10,
+       likes: 1-50 },
+  ]
+}
+```
