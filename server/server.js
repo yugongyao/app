@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const session = require('express-session')
 var MongoDBStore = require('connect-mongodb-session')(session);
 
-const homeRouter = require('./routes/homtRouter')
+const homeRouter = require('./routes/homeRouter')
 
 // const {} = require('./utils/config')
 
@@ -38,20 +38,18 @@ server.use(session({
     store: store
 }))
 
-
-
 // 处理请求
 server.use('/api/user', userRouter);
 server.use('/api/home', homeRouter);
 
 // 静态资源
 server.use(express.static(
-  path.join(__dirname, 'public')
+  path.join(__dirname, 'dist')
 ))
 
 // 响应首页
 server.get('/', (req, res)=>{
-  res.sendFile( path.join(__dirname + '/dist/index.html') );
+  res.sendFile( path.join(__dirname + 'dist/index.html') );
 });
 
 
