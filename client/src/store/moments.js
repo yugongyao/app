@@ -24,6 +24,7 @@ const actions = {
         if (result.status===0) {
             // 假设是请求成功的数据
             var data = result.data;
+            context.commit('momentsData', data)
         }
 
     }

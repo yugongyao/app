@@ -44,12 +44,12 @@ server.use('/api/home', homeRouter);
 
 // 静态资源
 server.use(express.static(
-  path.join(__dirname, 'dist')
+  path.join(__dirname, 'public')
 ))
 
 // 响应首页
 server.get('/', (req, res)=>{
-  res.sendFile( path.join(__dirname + 'dist/index.html') );
+  res.sendFile( path.join(__dirname + 'public/index.html') );
 });
 
 
