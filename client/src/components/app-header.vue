@@ -1,5 +1,5 @@
 <template>
-<div class="app-header border-bottom">
+<div class="app-header">
   <span v-if="hasBack" class="back-btn iconfont icon-icon4" @click="backAction"></span>
   <h1 class="title text-overflow">{{title}}</h1>
   <slot name="right-btn"/>
