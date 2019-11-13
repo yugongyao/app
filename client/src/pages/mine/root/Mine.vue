@@ -12,7 +12,6 @@
     <div class="btn2" @click="goRegiester()">前往注册</div>
   </div>
 </template>
-
 <script>
 export default {
   methods:{
