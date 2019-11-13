@@ -5,9 +5,9 @@ import router from './router'
 import store from './store'
 
 import './style/common.scss'
+Vue.use(plugin);
 Vue.config.productionTip = false
 
-Vue.use(plugin);
 
 new Vue({
   router,

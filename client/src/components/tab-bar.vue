@@ -1,5 +1,5 @@
 <template>
-<nav class="tab-bar border-top">
+<nav  class="tab-bar border-top">
   <router-link class="tab-item" v-for="item in tabList" :key="item.id" :to="item.path">
     <span :class="item.icon" id="icon"></span>
     <span class="title">{{item.title}}</span>
@@ -10,6 +10,7 @@
 <script>
 export default {
   name: 'tab-bar',
+
   data(){
     return {
       tabList: [
@@ -18,7 +19,7 @@ export default {
         {id: 3, path: '/issue', title: '发布', icon: 'iconfont icon-jia1'},
         {id: 4, path: '/inform', title: '通知', icon: 'iconfont icon-weibiaoti38'},
         {id: 5, path: '/mine', title: '我的', icon: 'iconfont icon-cub'}
-      ]
+      ],
     }
   }
 }

@@ -1,13 +1,20 @@
+import AppHeader from '../components/app-header'
 import AppScroll from '../components/app-scroll'
-
-
+import {
+    Icon,
+    Toast,
+    Lazyload,
+    Uploader,
+    DropdownMenu,
+    DropdownItem,
+    SwitchCell
+} from 'vant'
 export default {
-  install(Vue){
-    // 使用vant的插件
-    // 使用自定义的滚动组件
-    Vue.component(AppScroll.name, AppScroll);
-
-    Vue.$center = Vue.prototype.$center = new Vue();
-
-  }
+    install(Vue) {
+        // 使用vant的插件
+        Vue.use(Icon).use(Lazyload).use(Uploader).use(DropdownMenu).use(DropdownItem).use(SwitchCell);
+        Vue.prototype.$Toast = Toast;
+        Vue.component(AppHeader.name, AppHeader);
+        Vue.component(AppScroll.name, AppScroll);
+    }
 }

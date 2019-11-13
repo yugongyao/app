@@ -36,7 +36,7 @@ export default {
       this.$router.push(`/dynamic`);
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
