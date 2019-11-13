@@ -14,6 +14,7 @@ const CHECK_LOGIN = '/api/user/check_login';
 const REQUEST_MOMENTS = '/api/home/moment_list';
 
 export default {
+    HOST,
     SEND_CODE_API,
     REGIESTER_API,
     LOGIN_API,

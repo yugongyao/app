@@ -2,7 +2,8 @@
 import axios from 'axios'
 
 // 设置请求的域名
-import HOST from ''
+import api from './api'
+const HOST = api.HOST
 
 // 构建一个Http类，包含许多Http类的静态方法，以便直接调用（不用new实例）
 export default class Http{
