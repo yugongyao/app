@@ -145,6 +145,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .content {
+    position: absolute;
+    top: 45px;
+    bottom: 49px;
+    width: 100%;
+
+    &.noBar {
+      bottom: 0;
+      z-index: 200;
+    }
+  }
 #issue {
   height: 100%;
   width: 100%;

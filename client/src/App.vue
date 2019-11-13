@@ -23,18 +23,11 @@ export default {
 </script>
 <style lang="scss">
 
-.content {
-  position: absolute;
-  top: 45px;
-  bottom: 49px;
-  width: 100%;
-  &.noBar {
-    bottom: 0;
-    z-index: 200;
-  }
-}
 span.van-dropdown-menu__title{
   font-size: 13px!important;
+  color:#1989fa;
+}
+.van-ellipsis{
   color:#1989fa;
 }
 div.van-cell__title{

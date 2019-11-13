@@ -1,11 +1,13 @@
 import Vue from 'vue'
+import plugin from './plugin'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import plugin from './plugin'
+import './style/common.scss'
 
 Vue.use(plugin);
 Vue.config.productionTip = false
+
 
 new Vue({
   router,
