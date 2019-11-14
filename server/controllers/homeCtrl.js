@@ -1,6 +1,9 @@
-const momentsData = require('../model/mock_momentsList');
+const mockData = require('../model/mockData');
 
-var momentsList = async (req, res)=>{
+const momentsData = mockData.data;
+const hotData = mockData.rank;
+
+var momentsList = (req, res)=>{
     if(momentsData){
         res.json(momentsData);
     }
@@ -13,6 +16,20 @@ var momentsList = async (req, res)=>{
     }
 }
 
+var hotIssues = (req, res)=>{
+    if(hotData){
+        res.json(hotData);
+    }
+    else{
+        res.json({
+            msg: 'Missing data...',
+            status: -1,
+            data: null
+        })
+    }
+}
+
 module.exports = {
     momentsList,
+    hotIssues
 }
