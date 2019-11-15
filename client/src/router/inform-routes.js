@@ -1,18 +1,23 @@
 export default {
   path: '/inform',
-  component: ()=>import('../pages/inform/root/Inform'),
-  children: [
-    {
+  component: () => import('../pages/inform/root/Inform'),
+  redirect: "/inform/interact",
+  children: [{
       // 互动
       path: 'interact',
       props: true,
-      component: () => import('../pages/inform/interact/Interact')
+      components: {
+        interact: () => import('../pages/inform/interact/Interact')
+      }
     },
+
     {
       // 私信
       path: 'letter',
       props: true,
-      component: () => import('../pages/inform/letter/Letter')
+      components: {
+        letter: () => import('../pages/inform/letter/Letter')
+      }
     }
   ]
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="page" id="issue">
+  <div id="issue">
     <div style="display:none" id="allmap"></div>
     <app-header :hasBack="true" title="发布">
       <span slot="right-btn" class="right-btn" @click="uploaderAction">上传</span>
@@ -28,7 +28,7 @@
       <div class="pro">
         <van-switch-cell class="border-bottom" v-model="checked" title="原创" />
       </div>
-      <div class="footer">
+      <div class="footerEnd">
         <p>-The end-</p>
       </div>
     </div>
@@ -227,7 +227,7 @@ h3 {
   }
 }
 
-.footer {
+.footerEnd {
   position: absolute;
   bottom: 0;
   height: 49px;

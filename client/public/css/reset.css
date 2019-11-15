@@ -57,4 +57,6 @@ img{
 .fontXing{
 	font-family: STXingkai;
 }
-
+iframe{
+	display: none;
+}

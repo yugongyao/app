@@ -8,6 +8,7 @@
 </template>
 
 <script>
+// 使用vant代替
 export default {
   name: 'tab-bar',
 
@@ -26,6 +27,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .tab-bar{
   position: absolute;
   left: 0;
@@ -35,6 +37,7 @@ export default {
   height: 49px;
   overflow: hidden;
   background:#fff;
+  color: #777;
   .tab-item{
     display: flex;
     flex-direction: column;
@@ -42,17 +45,27 @@ export default {
     flex: 1;
     text-align: center;
     #icon{
-      font-size: 24px;
+      font-size: 20px;
       margin-bottom: 5px;
       margin-top: 5px;
+      color: #777;
     }
     .title{
       font-size: 12px;
       margin-bottom: 5px;
+      color: #777;
     }
     &.router-link-active{
       span{
-        color: goldenrod;
+        font-weight: bold;
+        color: #000;
+        &#icon.iconfont{
+          color: #000;
+          text-shadow: 2px 2px #aaaaaa;
+        }
+        &.title{
+          text-shadow: 2px 2px #aaaaaa;
+        }
       }
     }
   }
