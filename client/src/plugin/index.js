@@ -8,7 +8,7 @@ import {
     DropdownMenu,
     DropdownItem,
     SwitchCell,
-    Loading
+    Loading,
 } from 'vant'
 export default {
     install(Vue) {

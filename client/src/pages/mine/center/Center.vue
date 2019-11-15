@@ -1,42 +1,55 @@
 <template>
   <div class="page modal-page" id="center">
-    <app-header :title="title" :hasBack="hasBack"></app-header>
-    <app-scroll class="content">
-      <div class="top">
-        <img src="../../../assets/centerbg.jpg" alt class="centerbg"/>
-        <div class="user-icon">
-          <p></p>
-        </div>
+    <app-header :title="title" :hasBack="hasBack" class="topColor"></app-header>
+    <div class="top">
+      <img src="../../../assets/centerbg.jpg" alt class="centerbg" />
+      <div class="user-icon">
+        <p class="user-logo">
+          <img src="../../../assets/star.jpg" alt="">
+        </p>
       </div>
-      <div class="btn1" @click="goLogin()">前往登录</div>
-      <div v-for="item in 50" :key="item">{{item}}</div>
+    </div>
+    <div class="user-main">
+      <h2 class="user-name fontXing">用户名user</h2>
+      <div class="user-edit fontXing">编辑资料</div>
+    </div>
+    <div class="user-tab">
+      <div class="tab-inner">
+        <div class="tabs prod"><span>1</span><span>作品</span></div>
+        <div class="tabs atten"><span>2</span><span>关注</span></div>
+        <div class="tabs fans"><span>3</span><span>粉丝</span></div>
+      </div>
+    </div>
+    <app-scroll class="content">
+      <issueList/>
     </app-scroll>
   </div>
 </template>
 
 <script>
+
+import issueList from './children/issue-list'
+
 export default {
-  data(){
-    return {
-      title:'个人中心',
-      hasBack:true
-    }
+  components:{
+    issueList
   },
-  methods: {
-    goLogin() {
-      this.$router.push(`/login`);
-    }
-  }
-};
+  data() {
+    return {
+      title: "个人中心",
+      hasBack: true
+    };
+  },
+}
 </script>
 
 <style scoped lang="scss">
 #center {
-  .app-header{
+  .topColor{
+    color: #ddd;
+  }
+  .app-header {
     z-index: 200;
-    .back-btn{
-      color: #ddd;
-    }
   }
   background: #fff;
   .title {
@@ -47,20 +60,97 @@ export default {
     position: absolute;
     left: 0;
     top: 0;
-    color: #ddd
-;
+    color: #ddd;
     z-index: 200;
   }
   .top {
+    position: relative;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 150px;
     .centerbg {
       width: 100%;
+      height: 150px;
+    }
+    .user-icon{
+      position: absolute;
+      height: 60px;
+      width: 100%;
+      left: 0;
+      bottom: -15px;
+      z-index: 200;
+      .user-logo{
+        width: 60px;
+        height: 60px;
+        border: solid 2px #fff;
+        border-radius: 50%;
+        margin-left: 10px;
+        img{
+          width:100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  .user-main{
+    height: 50px;
+    width: 100%;
+    background: #fff;
+    position: relative;
+    .user-name{
+      line-height: 50px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .user-edit{
+      width: 60px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 12px;
+      background: #eee;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  .user-tab{
+    height: 50px;
+    width: 100%;
+    position: relative;
+    box-shadow: 2px 2px 5px #999;
+    .tab-inner{
+      width: 100%;
       height: 100%;
+      background: #eee;
+      border-radius:5px;
+      display: flex;
+      padding: 5px 0;
+      box-sizing: border-box;
+      .tabs{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        span:nth-of-type(1){
+          flex: 1;
+          font-size: 20px;
+        }
+        span:nth-of-type(2){
+          margin-top: 4px;
+          flex: 1;
+          font-size: 12px;
+          color: #aaa;
+        }
+      }
     }
   }
   .content {
-    top: 0;
+    top:250px;
   }
 }
 </style>
