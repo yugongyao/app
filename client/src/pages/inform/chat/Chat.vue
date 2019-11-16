@@ -51,6 +51,10 @@ export default {
   },
   methods: {
     sendAction() {
+      if(!this.words){
+        this.$Toast("请输入些内容吧！");
+        return;
+      }
       var thisWord = {
           time: (new Date()).getTime(),
           data: this.words,
@@ -181,6 +185,7 @@ export default {
               padding: 3px 6px;
               border-radius: 8px;
               border:1px solid #ccc;
+              word-break:break-all;
           }
           span.right{
               float: right;
