@@ -17,6 +17,7 @@ const routes = [
   issueRoutes,//发布
   informRoutes,//通知
   mineRoutes,//我的
+  
   {
     // 用户详情
     path: '/userDetail',
