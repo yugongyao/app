@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <div class="item" v-for="item in 6" :key="item">
-      <div class="choice"><span class="iconfont icon-weibiaoti38"></span></div>
+      <div class="choice"><span class="iconfont icon-weibiaoti38" ref="choice" @click="hasChoice(item)"></span></div>
       <div class="item-img">
         <img src="../../../../assets/moban.jpg" alt />
       </div>
@@ -10,16 +10,41 @@
         <p class="item-tag">#标签</p>
       </div>
     </div>
+    <div class="end"><p class="fontXing">-The End-</p></div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      isChoice:true
+    }
+  },
+  methods:{
+    hasChoice(index){
+      var choice=this.$refs.choice;
+      if (this.isChoice) {
+        choice[index-1].style.color="#333";
+        this.isChoice=false;
+      }else{
+        choice[index-1].style.color="#3F8EF5";
+        this.isChoice=true;
+      }
+    }
+  }
+};
 </script>
 
 <style scoped lang="scss">
 .list {
   padding: 10px 10px;
+  .end{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 20px;
+  }
   .item {
     padding: 10px;
     height: 120px;
@@ -35,8 +60,11 @@ export default {};
       top: 0;
       bottom: 0;
       margin: auto 0;
-      left: -30px;
+      left: -34px;
       line-height: 120px;
+      span{
+        padding: 4px;
+      }
     }
     .item-img {
       width: 100px;

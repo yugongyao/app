@@ -8,6 +8,13 @@
         <collList />
       </div>
     </app-scroll>
+    <div class="footer" ref="footer">
+      <span class="deleteAll">清空收藏视频</span>
+      <span class="deleteChoice">删除</span>
+    </div>
+    <div class="end">
+      
+    </div>
   </div>
 </template>
 
@@ -20,21 +27,22 @@ export default {
   },
   data() {
     return {
-      title: "收藏",
+      title: "我的收藏",
       hasBack: true,
       isShow:true
     };
   },
   methods: {
     show() {
-      console.log('点击按钮');
       var show=this.$refs.show;
-      console.log(show);
+      var footer=this.$refs.footer;
       if (this.isShow) {
         show.classList.add('showChoice');
+        footer.style.display="block";
         this.isShow=false;
       }else{
         show.classList.remove('showChoice');
+        footer.style.display="none";
         this.isShow=true;
       }
     }
@@ -58,5 +66,27 @@ export default {
 }
 .showChoice {
   transform: translateX(10%);
+}
+.footer{
+  background: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+  display: none;
+  span{
+    position: absolute;
+    font-size: 14px;
+  }
+  span:nth-of-type(1){
+    left: 12px;
+    color: #3F8EF5;
+  }
+  span:nth-of-type(2){
+    right: 12px;
+    color: #999;
+  }
 }
 </style>

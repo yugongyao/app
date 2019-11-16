@@ -41,19 +41,19 @@
             <span class="iconfont icon-you"></span>
           </div>
           <div class="other-item border-bottom">
-            <router-link to="/mine/feedback">帮助中心</router-link>
+            <router-link to="/mine/help">帮助中心</router-link>
             <span class="iconfont icon-you"></span>
           </div>
           <div class="other-item border-bottom">
-            <router-link to="/mine/feedback">充值系统</router-link>
+            <router-link to="/mine/vip">VIP系统</router-link>
             <span class="iconfont icon-you"></span>
           </div>
           <div class="other-item border-bottom">
-            <router-link to="/mine/feedback">vip系统</router-link>
+            <router-link to="/mine/contribute">投稿中心</router-link>
             <span class="iconfont icon-you"></span>
           </div>
           <div class="other-item">
-            <router-link to="/mine/feedback">我要投稿</router-link>
+            <router-link to="/mine/set">设置中心</router-link>
             <span class="iconfont icon-you"></span>
           </div>
         </div>

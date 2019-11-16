@@ -11,7 +11,7 @@
     </div>
     <div class="user-main">
       <h2 class="user-name fontXing">用户名user</h2>
-      <div class="user-edit fontXing">编辑资料</div>
+      <div class="user-edit fontXing"><router-link to="/mine/center/edit">编辑资料</router-link></div>
     </div>
     <div class="user-tab">
       <div class="tab-inner">
@@ -23,6 +23,9 @@
     <app-scroll class="content">
       <issueList/>
     </app-scroll>
+    <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -40,6 +43,9 @@ export default {
       hasBack: true
     };
   },
+  methods:{
+
+  }
 }
 </script>
 
