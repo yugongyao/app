@@ -24,11 +24,6 @@ const routes = [
     component: ()=>import('../pages/home/userDetail/UserDetail')
   },
   {
-    // 动态详情
-    path: '/dynamic',
-    component: ()=>import('../pages/home/dynamic/Dynamic')
-  },
-  {
     // 登录
     path: '/login',
     component: ()=>import('../pages/mine/login/Login')

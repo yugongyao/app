@@ -11,10 +11,6 @@ import {
     DropdownItem,
     SwitchCell,
     Loading,
-<<<<<<< HEAD
-    Tab,
-    Tabs
-=======
     Popup,
     Field,
     Cell,
@@ -33,14 +29,10 @@ import {
     ImagePreview,
     Swipe, 
     SwipeItem
->>>>>>> 77ae1df74c03abd6c039b11ec994587bae53b558
 } from 'vant'
 export default {
     install(Vue) {
         // 使用vant的插件
-<<<<<<< HEAD
-        Vue.use(Icon).use(Lazyload).use(Uploader).use(Loading).use(DropdownMenu).use(DropdownItem).use(SwitchCell).use(Tab).use(Tabs);
-=======
         Vue.use(Icon)
         .use(Lazyload)
         .use(Uploader)
@@ -69,7 +61,6 @@ export default {
         .use(ImagePreview)
         .use(Swipe)
         .use(SwipeItem);
->>>>>>> 77ae1df74c03abd6c039b11ec994587bae53b558
         Vue.prototype.$Toast = Toast;
         Vue.component(AppHeader.name, AppHeader);
         Vue.component(AppScroll.name, AppScroll);

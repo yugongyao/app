@@ -8,11 +8,5 @@ export default {
       props: true,
       component: () => import('../pages/home/bannerDetail/BannerDetail')
     },
-    {
-      // 动态详情
-      path: 'dynamic/:username',
-      props: true,
-      component: ()=>import('../pages/home/dynamic/Dynamic')
-    }
   ]
 }
