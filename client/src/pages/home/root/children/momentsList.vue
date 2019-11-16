@@ -1,6 +1,6 @@
 <template>
   <div class="moments-list">
-      <div class="moment-wrap" v-for="data in moments" :key="data.id">
+      <div class="moment-wrap" v-for="data in moments" :key="data.id" @click="goDynamic()">
           <div class="user">
               <img :src="data.icon" alt="用户头像">
               <span class="nickname">{{data.username}}</span>
@@ -14,10 +14,10 @@
           </ul>
           <div class="messages">
               <span>
-                  <van-icon name="comment-o" size="20px"/>  {{data.comments}}
+                  <van-icon class="m-icon" name="comment-o" size="20px"/>  {{data.comments}}
               </span>
               <span>
-                  <van-icon name="like-o" size="20px"/>  {{data.likes}}
+                  <van-icon class="m-icon" name="like-o" size="20px"/>  {{data.likes}}
               </span>
           </div>
       </div>
@@ -31,6 +31,11 @@ export default {
             type: Array,
             required: true
         }
+    },
+    methods: {
+        goDynamic(){
+            this.$router.push(`/inform/detail/1`);
+        }
     }
 }
 </script>
@@ -38,6 +43,7 @@ export default {
 <style scoped lang="scss">
 .moments-list{
     width: 100%;
+    padding-bottom: 10px;
 }
 .moment-wrap{
     width: 90%;
@@ -101,6 +107,10 @@ export default {
             font-size: 14px;
             line-height: 24px;
             cursor: pointer;
+            .m-icon{
+                font-size: 14px;
+                vertical-align: text-bottom;
+            }
         }
     }
 }

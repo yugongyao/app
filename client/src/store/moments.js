@@ -4,6 +4,7 @@ import api from '../utils/api'
 
 const state = {
     momentsData:[],
+    myMoment:[],
     hotIssues: [],
     isLoading: false
 }
@@ -14,6 +15,9 @@ const mutations = {
     // 设置动态列表
     setMomentsData(state, value){
         state.momentsData = value;
+    },
+    setMyMoment(state, value){
+        state.myMoment = value;
     },
     setLoading(state, value){
         state.isLoading = value;
@@ -40,6 +44,22 @@ const actions = {
         }
         
     },
+    async requestMyMoment(context){
+        try {
+            context.commit("setLoading", true);
+            var result = await Http.get(api.REQUEST_MOMENTS+'?flag=my');
+            if (result.data.status==0) {
+                // 假设是请求成功的数据
+                var data = result.data.data;
+                context.commit('setMyMoment', data);
+                context.commit('setLoading', false);
+            }
+        } catch (error) {
+            throw  new Error(error);
+        }
+        
+    },
+    // 请求热门话题
     async requestHotIssues(context){
         try {
             var result = await Http.get(api.HOT_ISSUES);
@@ -52,7 +72,23 @@ const actions = {
             throw  new Error(error);
         }
         
-    }
+    },
+    // 刷新动态
+    async refreshMoments(context){
+        try {
+            context.commit("setLoading", true);
+            var result = await Http.get(api.REQUEST_MOMENTS+'?t='+Date.now());
+            if (result.data.status==0) {
+                // 假设是请求成功的数据
+                var data = result.data.data;
+                context.commit('setMomentsData', data);
+                context.commit('setLoading', false);
+            }
+        } catch (error) {
+            throw  new Error(error);
+        }
+        
+    },
 }
 
 export default {

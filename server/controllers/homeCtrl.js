@@ -1,11 +1,12 @@
 const mockData = require('../model/mockData');
 
-const momentsData = mockData.data;
+const refresh = mockData.refresh
 const hotData = mockData.rank;
 
 var momentsList = (req, res)=>{
-    if(momentsData){
-        res.json(momentsData);
+    let result = refresh();
+    if(result){
+        res.json(result);
     }
     else{
         res.json({
@@ -17,8 +18,9 @@ var momentsList = (req, res)=>{
 }
 
 var hotIssues = (req, res)=>{
-    if(hotData){
-        res.json(hotData);
+    let result = hotData();
+    if(result){
+        res.json(result);
     }
     else{
         res.json({

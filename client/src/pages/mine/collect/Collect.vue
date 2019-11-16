@@ -1,15 +1,92 @@
 <template>
-<div class="page" id="collect">
-  <h1>收藏中心</h1>
-</div>
+  <div class="page modal-page" id="collect">
+    <app-header :title="title" :hasBack="hasBack" class="topColor border-bottom">
+      <span slot="right-btn" class="right-btn" @click="show()">取消</span>
+    </app-header>
+    <app-scroll class="content">
+      <div ref="show" class="show">
+        <collList />
+      </div>
+    </app-scroll>
+    <div class="footer" ref="footer">
+      <span class="deleteAll">清空收藏视频</span>
+      <span class="deleteChoice">删除</span>
+    </div>
+    <div class="end">
+      
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
+import collList from "./children/coll-list";
 
-}
+export default {
+  components: {
+    collList
+  },
+  data() {
+    return {
+      title: "我的收藏",
+      hasBack: true,
+      isShow:true
+    };
+  },
+  methods: {
+    show() {
+      var show=this.$refs.show;
+      var footer=this.$refs.footer;
+      if (this.isShow) {
+        show.classList.add('showChoice');
+        footer.style.display="block";
+        this.isShow=false;
+      }else{
+        show.classList.remove('showChoice');
+        footer.style.display="none";
+        this.isShow=true;
+      }
+    }
+  }
+};
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.page-wrap {
+  z-index: 999;
+  .page {
+    background: #fff !important;
+  }
+}
+#collect {
+  .topColor {
+    color: #333;
+    background: #fafafa;
+    box-shadow: 2px 2px 5px #999;
+  }
+}
+.showChoice {
+  transform: translateX(10%);
+}
+.footer{
+  background: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+  display: none;
+  span{
+    position: absolute;
+    font-size: 14px;
+  }
+  span:nth-of-type(1){
+    left: 12px;
+    color: #3F8EF5;
+  }
+  span:nth-of-type(2){
+    right: 12px;
+    color: #999;
+  }
+}
 </style>
