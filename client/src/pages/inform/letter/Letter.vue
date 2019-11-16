@@ -2,7 +2,7 @@
   <div id="letter">
     <app-scroll class="scroll border-top fontXing">
       <ul>
-        <li class="item border-bottom">
+        <li @click="chatAction" class="item border-bottom">
            <div class="headImg">
           <img src="../../../assets/login.jpg" alt />
         </div>
@@ -21,7 +21,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    chatAction(){
+      this.$router.push("/inform/chat/1");
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

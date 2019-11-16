@@ -17,7 +17,22 @@ export default {
       props: true,
       components: {
         letter: () => import('../pages/inform/letter/Letter')
-      }
+      },
+    },
+    {
+      path: "detail/:workid",
+      props: true,
+      component: () => import('../pages/inform/detail/Works')
+    },
+    {
+      path: "detail/:workid/:intid",
+      props: true,
+      component: () => import('../pages/inform/detail/Detail')
+    },
+    {
+      path: 'chat/:userid',
+      props: true,
+      component: () => import('../pages/inform/chat/Chat')
     }
   ]
 }

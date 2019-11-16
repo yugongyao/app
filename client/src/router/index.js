@@ -17,11 +17,7 @@ const routes = [
   issueRoutes,//发布
   informRoutes,//通知
   mineRoutes,//我的
-  {
-    path: "/detail/:id",
-    props: true,
-    component: () => import('../pages/inform/detail/Detail')
-  },
+  
   {
     // 用户详情
     path: '/userDetail',

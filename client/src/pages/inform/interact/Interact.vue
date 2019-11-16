@@ -1,9 +1,9 @@
 <template>
-<div>
-  <div id="interact">
-    <app-scroll class="scroll border-top fontXing">
-    <ul>
-      <!-- <li class="item">
+  <div>
+    <div id="interact">
+      <app-scroll class="scroll border-top fontXing">
+        <ul>
+          <!-- <li class="item">
         <div class="headImg">
           <img src="../../../assets/login.jpg" alt />
         </div>
@@ -23,70 +23,91 @@
             <span class="link">点赞</span>
           </p>
         </div>
-      </li> -->
-  
-      <li @click="showAllAction(1)" class="item">
-        <div class="headImg">
-          <img src="../../../assets/login.jpg" alt />
-        </div>
-        <div :class="['intContent','border-bottom']">
-          <p class="showAll">
-            <span class="iconfont icon-you"></span>
-          </p>
-          <template v-if="interact">
-          <p class="intType">评论了我的图片:</p>
-          <p class="intLetter">多好看的照片</p>
-          </template>
-          <p class="intType" v-if="like">喜欢了我的作品:</p>
-          <p class="intType" v-if="atte">关注了我:</p>
-          <div :class="['essay',{isAtte:atte}]">
-            <img v-if="interact||like" src="../../../assets/login.jpg" alt />
-            <span class="yourName text-overflow">@Change<span v-if="interact||like">的作品</span></span>
-          </div>
-          <p class="operator">
-            <a href="/" class="reply" v-if="interact">回复</a>
-            <span class="time">2019-11-13</span>
-            <span v-if="interact" class="link iconfont icon-icon-test"></span>
-          </p>
-        </div>
-      </li>
-  
-     <div class="footerEnd">
-        <p>-The end-</p>
-      </div>
-    </ul>
-    </app-scroll>
-  </div>
-  <router-view></router-view>
+          </li>-->
 
-</div>
+          <li class="item">
+            <div class="headImg">
+              <img src="../../../assets/login.jpg" alt />
+            </div>
+            <div :class="['intContent','border-bottom']">
+              <p @click="showAllAction(1)" class="showAll">
+                <span class="iconfont icon-you"></span>
+              </p>
+              <template v-if="interact">
+                <p class="intType">评论了我的图片:</p>
+                <p class="intLetter">多好看的照片</p>
+              </template>
+              <p class="intType" v-if="like">喜欢了我的作品:</p>
+              <p class="intType" v-if="atte">关注了我:</p>
+              <div @click="goWorkDtailAction" :class="['essay',{isAtte:atte}]">
+                <img v-if="interact||like" src="../../../assets/login.jpg" alt />
+                <span class="yourName text-overflow">
+                  @Change
+                  <span v-if="interact||like">的作品</span>
+                </span>
+              </div>
+              <p class="operator">
+                <a @click="toIntAction('reply')" class="reply" v-if="interact">回复</a>
+                <span class="time">2019-11-13</span>
+                <span v-if="interact" class="link iconfont icon-icon-test"></span>
+              </p>
+            </div>
+          </li>
+
+          <the-end></the-end>
+        </ul>
+      </app-scroll>
+    </div>
+    <router-view></router-view>
+    <transition enter-active-class="slideInUp" leave-active-class="slideOutDown">
+      <mask-module v-model="isInt" :title="title"></mask-module>
+    </transition>
+  </div>
 </template>
 
 <script>
+import MaskModule from "../detail/children/mask-module";
 export default {
-  data(){
-    return{
-      interact: true,
-      like:false,
-      atte:false,
-
-    }
+  components: {
+    [MaskModule.name]: MaskModule
   },
-  methods:{
-    showAllAction(index){
-      this.$router.push("/detail/"+index);
-    }
+  data() {
+    return {
+      interact: true,
+      like: false,
+      atte: false,
+      title:"",
+      isInt: false,
+    };
+  },
+  methods: {
+    showAllAction(index) {
+      this.$router.push("/inform/detail/" + index + "/123");
+    },
+     toIntAction(option = "int") {
+      console.log(option);
+
+      if (option == "reply") {
+        this.title = "回复";
+      } else {
+        this.title = "评论";
+      }
+      this.isInt = true;
+    },
+    goWorkDtailAction() {
+      this.$router.push("/inform/detail/1");
+    },
   }
 };
 </script>
 
 <style lang="scss" scoped>
 #interact {
-  .scroll{
+  .scroll {
     position: absolute;
     top: 0px;
     bottom: 0px;
-    width: 100%; 
+    width: 100%;
   }
   ul {
     list-style: none;
@@ -136,7 +157,7 @@ export default {
           padding: 12px;
           display: flex;
           box-sizing: border-box;
-          &.isAtte{
+          &.isAtte {
             height: 70px;
           }
           img {
@@ -153,14 +174,16 @@ export default {
         .operator {
           line-height: 32px;
           height: 32px;
-          .reply,.time,.link{
+          .reply,
+          .time,
+          .link {
             font-size: 13px;
             color: #555;
           }
-          .link{
+          .link {
             float: right;
           }
-          .time{
+          .time {
             margin-left: 14px;
           }
         }

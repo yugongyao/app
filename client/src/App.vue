@@ -3,7 +3,7 @@
     <keep-alive>
       <router-view v-if="!other"></router-view>
     </keep-alive>
-    <transition enter-active-class="slideInUp animated" leave-active-class="slideOutDown animated">
+    <transition enter-active-class="slideInUp" leave-active-class="slideOutDown">
       <router-view v-if="other"></router-view>
     </transition>
     <tab-bar v-if="hasBar"></tab-bar>
@@ -32,7 +32,7 @@ export default {
   //   }
     watch: {
       $route(to, from) {
-        if (this.$route.path.startsWith("/detail")||this.$route.path.startsWith("/issue")) {
+        if (this.$route.path.startsWith("/issue")) {
           this.hasBar = false;
           this.other = true;
         }else{

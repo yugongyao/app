@@ -59,7 +59,7 @@ export default {
       checked: true,
       address: ""
     };
-  },
+  },                                                                                         
 
   methods: {
     uploaderAction() {

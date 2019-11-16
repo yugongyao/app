@@ -147,6 +147,8 @@ div.van-cell__title {
 .slideInRight,
 .slideOutRight,
 .slideInDown,
+.slideOutDown,
+.slideInUp,
 .slideOutDown {
   animation-duration: 200ms;
 }
@@ -265,9 +267,10 @@ div.van-cell__title {
   }
 }
 .footerEnd {
-  margin-top: 20px;
+  margin-top: 10px;
   height: 49px;
   width: 100%;
   text-align: center;
   line-height: 49px;
+  font-family: STXingkai;
 }

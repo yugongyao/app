@@ -1,13 +1,14 @@
 <template>
-  <div id="detail" >
-    <p>detail{{id}}</p>
+  <div id="detail">
+    <int-list :isIntDetail="true"></int-list>
   </div>
 </template>
 
 <script>
+import IntList from "./children/int-list";
 export default {
-  props: {
-    id: String
+  components:{
+    [IntList.name]:IntList
   }
 };
 </script>
@@ -17,8 +18,9 @@ export default {
   position: absolute;
   top: 0px;
   bottom: 0px;
-  background: red;
+  background: #454545;
   width: 100%;
-  z-index: 999;
+  z-index: 200;
+  
 }
 </style>
