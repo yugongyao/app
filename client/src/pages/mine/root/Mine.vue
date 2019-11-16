@@ -2,7 +2,7 @@
   <div class="page-wrap">
     <div class="page" id="mine">
       <!-- 顶部 -->
-      <div class="top">我的</div>
+      <app-header :title="title" class="topColor"></app-header>
       <!-- 用户 -->
       <div class="page-content">
         <div class="user card fontXing">
@@ -41,19 +41,19 @@
             <span class="iconfont icon-you"></span>
           </div>
           <div class="other-item border-bottom">
-            <router-link to="/mine/feedback">帮助中心</router-link>
+            <router-link to="/mine/help">帮助中心</router-link>
             <span class="iconfont icon-you"></span>
           </div>
           <div class="other-item border-bottom">
-            <router-link to="/mine/feedback">充值系统</router-link>
+            <router-link to="/mine/vip">VIP系统</router-link>
             <span class="iconfont icon-you"></span>
           </div>
           <div class="other-item border-bottom">
-            <router-link to="/mine/feedback">vip系统</router-link>
+            <router-link to="/mine/contribute">投稿中心</router-link>
             <span class="iconfont icon-you"></span>
           </div>
           <div class="other-item">
-            <router-link to="/mine/feedback">我要投稿</router-link>
+            <router-link to="/mine/set">设置中心</router-link>
             <span class="iconfont icon-you"></span>
           </div>
         </div>
@@ -69,7 +69,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data(){
+    return {
+      title:'我的'
+    }
+  }
+};
 </script>
 
 <style scoped lang="scss">
@@ -79,9 +85,13 @@ export default {};
 .page {
   background: url(../../../assets/mine1.jpg) no-repeat;
   background-size: 100% 100%;
+  .topColor{
+    color: #ddd;
+  }
 }
 .page-content {
   padding: 0px 20px;
+  margin-top: 44px;
   box-sizing: border-box;
 }
 .card {

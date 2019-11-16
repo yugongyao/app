@@ -11,16 +11,31 @@ import {
     DropdownItem,
     SwitchCell,
     Loading,
+    Popup,
+    Field,
+    Cell,
+    CellGroup,
+    Picker,
+    DatetimePicker,
+    Radio,
+    RadioGroup,
+    Button,
+    Collapse,
+    CollapseItem,
+    Switch,
     List,
     Tab,
     Tabs,
     ImagePreview,
-     Swipe, SwipeItem
+    Swipe, 
+    SwipeItem
 } from 'vant'
 export default {
     install(Vue) {
         // 使用vant的插件
-        Vue
+        Vue.use(Icon)
+        .use(Lazyload)
+        .use(Uploader)
         .use(Icon)
         .use(Lazyload)
         .use(Uploader)
@@ -31,6 +46,18 @@ export default {
         .use(DropdownMenu)
         .use(DropdownItem)
         .use(SwitchCell)
+        .use(Popup)
+        .use(Field)
+        .use(Cell)
+        .use(CellGroup)
+        .use(Picker)
+        .use(DatetimePicker)
+        .use(Radio)
+        .use(RadioGroup)
+        .use(Button)
+        .use(Collapse)
+        .use(CollapseItem)
+        .use(Switch)
         .use(ImagePreview)
         .use(Swipe)
         .use(SwipeItem);
