@@ -1,5 +1,5 @@
 <template>
-<div class="app-scroll" ref="scroll">
+<div class="juan-scroll" ref="scroll">
   <div class="scoll-wrap">
     <slot/>
   </div>
@@ -9,7 +9,7 @@
 <script>
 import BScroll from 'better-scroll'
 export default {
-  name: 'app-scroll',
+  name: 'juan-scroll',
   props:{
     pullup:{
       type: Boolean,
@@ -28,9 +28,9 @@ export default {
       this.scroll.refresh();
     });
     if(this.pullup){
-
+      
       this.scroll.on('scroll',(pos)=>{
-        const maxY = this.scroll.maxScrollY-80;
+        const maxY = this.scroll.maxScrollY-70;
         if(pos.y < maxY){
           this.$emit('modifyTxt', '释放立即刷新');
         } else {
@@ -38,7 +38,7 @@ export default {
         }
       })
       this.scroll.on('touchEnd',async (pos)=>{
-        const maxY = this.scroll.maxScrollY-80;
+        const maxY = this.scroll.maxScrollY-70;
         if(pos.y < maxY){
           // 刷新吧
           this.$emit('setRefresh',true);
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-.app-scroll{
+.juan-scroll{
   overflow: hidden;
 }
 </style>

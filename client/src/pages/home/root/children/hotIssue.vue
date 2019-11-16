@@ -1,10 +1,11 @@
 <template>
   <div class="hot-wrap">
-    <div v-for="(item, index) in domList" :key="index" :class="item.classname">
+    <div v-for="item in domList" :key="item.id" :class="item.classname">
       <span></span>
-      <p>{{issues[index].title}}</p>
+      <p>{{issues[item.id-1] && issues[item.id-1].title}}</p>
     </div>
     <div class="box more">
+      <span></span>
       <p style="color:white;">. . .</p>
     </div>
   </div>
@@ -21,10 +22,10 @@ export default {
   data(){
     return {
       domList: [
-        {'classname':'box rank1'},
-        {'classname':'box rank2'},
-        {'classname':'box rank3'},
-        {'classname':'box rank4'}
+        {'classname':'box rank1', id:1},
+        {'classname':'box rank2', id:2},
+        {'classname':'box rank3', id:3},
+        {'classname':'box rank4', id:4}
       ]
     }
   }
@@ -121,9 +122,13 @@ export default {
     bottom: 0;
     width: 38%;
     height: 70px;
-    background: url(../../../../assets/cloud.png) no-repeat;
-    background-size: 236px 80px;
-    animation: cloud 12s linear infinite;
+    background-color: rgba(34, 49, 67, 0.743);
+    
+    span{
+      background: url(../../../../assets/cloud.png) no-repeat;
+      background-size: 236px 80px;
+      animation: cloud 12s linear infinite;
+    }
   }
 }
 </style>

@@ -6,7 +6,7 @@
           <van-tab title="精选">
               <!-- <router-link to="/home/bannerDetail/1">前往轮播详情</router-link>
               <div class="btn1" @click="goUserDetail()">前往用户详情</div>-->
-              <app-scroll class="homeContent" ref="homeContent" :pullup="pullup" @requestData="handleRefresh" @modifyTxt="setPullUpMsg" @setRefresh="setRereshing">
+              <juan-scroll class="homeContent" ref="homeContent" :pullup="pullup" @requestData="handleRefresh" @modifyTxt="setPullUpMsg" @setRefresh="setRereshing">
                 <banner :list="bannerList" />
                 <recommendUser />
                 <hot :issues="issuesList"/>
@@ -14,16 +14,16 @@
                 <div class="loadmore">
                   <span v-if="!isRefreshing">{{pullUpMsg}}</span>
                 </div>
-             </app-scroll>
+             </juan-scroll>
           </van-tab>
         <van-tab title="关注">
-          <app-scroll class="homeContent" :pullup="pullup" @requestData="handleRefresh" @modifyTxt="setPullUpMsg" @setRefresh="setRereshing">
+          <juan-scroll class="homeContent" :pullup="pullup" @requestData="handleRefresh" @modifyTxt="setPullUpMsg" @setRefresh="setRereshing">
             <recommendUser />
             <recommend :moments="myMoments" />
              <div class="loadmore">
                 <span v-if="!isRefreshing">{{pullUpMsg}}</span>
               </div>
-          </app-scroll>
+          </juan-scroll>
         </van-tab>
         </van-tabs>
         
@@ -106,28 +106,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.btn1 {
-  background: yellowgreen;
-}
-.btn2 {
-  background: #ddd;
-}
-.list{
-  overflow: hidden;
-}
-.page{
-  position: relative;
-}
+
 .tab-bar{
   position:fixed!important;
 }
 .homeContent{
   width: 100%;
-  height: 573px;
-}
-.page {
-  background: url(../../../assets/mine1.jpg) no-repeat;
-  background-size: 100% 100%;
+  height: 574px;
+  background: url('../../../assets/t4.jpg') no-repeat;
 }
 .van-loading__spinner {
   position: absolute;
@@ -173,6 +159,6 @@ export default {
 .loadmore span{
   height: 20px;
   font-size: 16px;
-  color: #e5e5e5;
+  color: #666;
 }
 </style>

@@ -49,7 +49,6 @@ var starUsers = Mock.mock({
     ]
 })
 
-
 module.exports = {
     refresh,
     rank,

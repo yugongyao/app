@@ -65,7 +65,7 @@ const actions = {
             var result = await Http.get(api.HOT_ISSUES);
             if (result.data.status==0) {
                 // 假设是请求成功的数据
-                var data = result.data.data;
+                let data = result.data.data;
                 context.commit('setHotIssues', data);
             }
         } catch (error) {
