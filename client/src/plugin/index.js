@@ -1,5 +1,6 @@
 import AppHeader from '../components/app-header'
 import JuanScroll from '../components/juan-scroll'
+import AppScroll from '../components/app-scroll'
 import AppTab from '../components/app-tab'
 import TheEnd from '../components/the-end'
 
@@ -65,6 +66,7 @@ export default {
         Vue.prototype.$Toast = Toast;
         Vue.component(AppHeader.name, AppHeader);
         Vue.component(JuanScroll.name, JuanScroll);
+        Vue.component(AppScroll.name, AppScroll);
         Vue.component(AppTab.name, AppTab);
         Vue.component(TheEnd.name, TheEnd);
     }
