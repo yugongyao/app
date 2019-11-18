@@ -38,7 +38,13 @@
 <script>
 import axios from "axios";
 export default {
-  
+  beforeRouteEnter(to, from, next) {
+    if(store.state.isLogin){
+      next();
+    } else{
+      next('/login');
+    }
+  },
   data() {
     return {
       fileList: [],

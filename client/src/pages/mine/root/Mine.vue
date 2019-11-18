@@ -74,6 +74,15 @@ export default {
     return {
       title:'我的'
     }
+  },
+  computed: {
+    ...mapState({
+      userInfo: state=>state.userInfo
+    })
+  },
+  created(){
+    console.log('执行了');
+    this.$store.dispatch('requestUserInfo');
   }
 };
 </script>

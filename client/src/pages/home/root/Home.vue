@@ -2,7 +2,7 @@
   <div class="page-wrap">
     <div class="page" id="home">
       
-        <van-tabs v-model="active" swipeable animated background="#22263f" color="#ebe" titleActiveColor="#fff" titleInactiveColor="#feeeee" id="home-tab">
+        <van-tabs v-model="active" swipeable animated background="#22263f" color="#ebe" titleActiveColor="#fff" titleInactiveColor="#feeeee" id="home-tab" @click="onClick">
           <van-tab title="精选">
               <!-- <router-link to="/home/bannerDetail/1">前往轮播详情</router-link>
               <div class="btn1" @click="goUserDetail()">前往用户详情</div>-->
@@ -17,7 +17,7 @@
              </juan-scroll>
           </van-tab>
         <van-tab title="关注">
-          <juan-scroll class="homeContent" :pullup="pullup" @requestData="handleRefresh" @modifyTxt="setPullUpMsg" @setRefresh="setRereshing">
+          <juan-scroll class="homeContent" :pullup="pullup" @requestData="handleRefresh" @modifyTxt="setPullUpMsg" @setRefresh="setRereshing" v-if="isLogin">
             <recommendUser />
             <recommend :moments="myMoments" />
              <div class="loadmore">
@@ -39,10 +39,12 @@
 import banner from "./children/banner";
 import hot from "./children/hotIssue";
 import recommend from "./children/momentsList";
-import recommendUser from "./children/stars"
+import recommendUser from "./children/stars";
+import store from '../../../store';
 
 // 引入仓库方法
 import {mapState} from 'vuex';
+
 export default {
 
   components: {
@@ -57,7 +59,8 @@ export default {
       momentsList: state=>state.moments.momentsData,
       issuesList: state=>state.moments.hotIssues,
       myMoments: state=>state.moments.myMoment,
-    })
+      isLogin:state=>state.isLogin
+    }),
   },
   data() {
     return {
@@ -75,6 +78,13 @@ export default {
     };
   },
   methods: {
+    onClick(name, title){
+      if(name === 1){
+        if(!store.state.isLogin){
+          this.$router.push('/login');
+        }
+      }
+    },
     goUserDetail() {
       this.$router.push(`/userDetail`);
     },

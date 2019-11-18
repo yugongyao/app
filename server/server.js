@@ -1,9 +1,8 @@
 const express = require('express');
 const userRouter = require('./routes/userRouter')
-// const path = require('path');
+const path = require('path');
 const mongoose = require('mongoose');
-const session = require('express-session')
-const cookieParser = require('cookie-parser');
+const session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
 
 const homeRouter = require('./routes/homeRouter')
@@ -51,14 +50,6 @@ server.use(session({
   })
 }));
 
-<<<<<<< HEAD
-// 处理静态资源
-server.use(express.json());
-// 处理post参数
-
-
-=======
->>>>>>> 6d9ace70584a45a16b837f5e0b894c93466dc4d4
 // 处理请求
 server.use('/api/user', userRouter);
 server.use('/api/home', homeRouter);
@@ -76,8 +67,6 @@ server.use('/api/recommend_users', (req,res)=>{
   }
 })
 
-<<<<<<< HEAD
-=======
 // 静态资源
 server.use(express.static(
   path.join(__dirname, 'public')
@@ -89,7 +78,6 @@ server.use(express.static(
 server.use('/', (req, res)=>{
   res.sendFile( path.join(__dirname + '/public/index.html') );
 });
->>>>>>> 6d9ace70584a45a16b837f5e0b894c93466dc4d4
 
 
 // 连接数据库，连接成功再开启服务
