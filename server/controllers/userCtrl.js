@@ -37,19 +37,26 @@ var login = async (req, res, next)=>{
 var emailVerify = async (req, res, next)=>{
     
     var {email} = req.query;
+    console.log(email);
+    
 
     var code = Email.code;
-
+    console.log(code);
+    console.log(req.session);
+    
     // 验证码保存在session里
     req.session.code = code;
+    
     req.session.email = email;
+    console.log(req.session);
+    
 
     // 要发送的字段
     var mailOptions = {
-        from: '邮箱验证 <blossomyclover@163.com>',
+        from: '[PXC] <blossomyclover@163.com>',
         to: email,
         // 标题
-        subject: '测试邮箱验证码',
+        subject: '[PXC]验证码',
         // 内容
         text: '验证码为：' + code
     }
@@ -77,9 +84,13 @@ var regiester = async (req, res, next)=>{
 
     // 前端传输的参数，邮箱、密码、验证码
     var { username, email, password, code } = req.body;
-    console.log(req.session.code);
+    console.log(username, email, password, code);
+    console.log(req.session);
     
+    // console.log(req.session.code);
+    // console.log(req.session.email)
     if( email !== req.session.email || code !== req.session.code ) {
+        // if(!code){
         res.json({
             message: '验证码错误',
             status: -1

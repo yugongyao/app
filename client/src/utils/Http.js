@@ -47,7 +47,7 @@ export default class Http{
 	}
 
 	// post方法
-	static get(url, data){
+	static post(url, data){
 		return this.request('POST', url, data);
 	}
 

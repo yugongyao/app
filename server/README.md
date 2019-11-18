@@ -4,7 +4,7 @@
 
 **method:** get
 
-**url:** /api/user/send_code
+**url:** /api/user/send_code/
 
 **参数:** email
 **返回值:**
