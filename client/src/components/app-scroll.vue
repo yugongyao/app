@@ -18,8 +18,8 @@ export default {
       probeType:1
     });
     this.scroll.on("scroll", pos => {
-      console.log(pos.y);
-      this.$emit('sendY',true);
+      // console.log(pos.y);
+      // this.$emit('sendY',true);
     });
   }
 };
