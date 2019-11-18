@@ -8,11 +8,7 @@
     <div class="form-group">
       <input class="form-contrl" type="password" placeholder="请输入密码" v-model="psd"/>
     </div>
-    <div class="form-group">
-      <input class="form-contrl" type="number" placeholder="请输入验证码" v-model="code"/>
-      <span class="form-tip">{{btnTip}}</span>
-    </div>
-    <div class="confirm-btn">
+    <div class="confirm-btn" @click="loginAction()">
       登录
     </div>
     <p class="alert-info" @click="goRegAction()">没有账号，立即注册<span class="iconfont icon-you"></span></p>
@@ -21,14 +17,13 @@
 </template>
 
 <script>
+import API from '../../../utils/api'
+import Http from '../../../utils/Http'
 export default {
   data(){
     return {
       tel: '',
       psd: '',
-      code: '',
-      getCode: '',
-      btnTip: '发送',
       tip:'登录'
     }
   },
@@ -38,7 +33,25 @@ export default {
     },
     goBack(){
       this.$router.back();
+    },
+
+    async loginAction(){
+      let email = this.tel;
+      let password = this.psd;
+      if (!email || !password){
+        this.$Toast('输入不能为空！');
+      }
+      let result = await Http.post(API.LOGIN_API, {email,password});
+      await this.$Toast(result.data.msg);
+      if (result.data.status === 0){
+        // 设置登录状态为true
+        this.$store.commit('setLogin', true);
+        setTimeout(() => {
+          this.$router.push('/home');
+        }, 500);
+      }
     }
+
   }
 }
 </script>

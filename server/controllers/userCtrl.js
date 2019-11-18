@@ -48,9 +48,7 @@ var emailVerify = async (req, res, next)=>{
     req.session.code = code;
     
     req.session.email = email;
-    console.log(req.session);
     
-
     // 要发送的字段
     var mailOptions = {
         from: '[PXC] <blossomyclover@163.com>',
@@ -87,10 +85,7 @@ var regiester = async (req, res, next)=>{
     console.log(username, email, password, code);
     console.log(req.session);
     
-    // console.log(req.session.code);
-    // console.log(req.session.email)
-    if( email !== req.session.email || code !== req.session.code ) {
-        // if(!code){
+    if( (email !== req.session.email) || (code !== req.session.code) ) {
         res.json({
             message: '验证码错误',
             status: -1
@@ -137,10 +132,27 @@ var logout = async (req, res)=>{
     })
 }
 
+var userInfo = async (req, res)=>{
+    if(req.session.userInfo){
+        res.json({
+            status: 0,
+            msg: 'ok',
+            data: req.session.userInfo
+        })
+    } else {
+        res.json({
+            status: -1,
+            msg: '请重新登录',
+            data: null
+        })
+    }
+}
+
 module.exports = {
     login,
     regiester,
     emailVerify,
     checkLogin,
-    logout
+    logout,
+    userInfo
 }

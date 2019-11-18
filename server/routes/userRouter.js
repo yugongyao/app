@@ -19,4 +19,7 @@ router.get('/check_login', userCtrl.checkLogin)
 // 退出登录
 router.get('/logout', userCtrl.logout)
 
+// 获取用户名
+router.get('/userinfo', userCtrl.userInfo)
+
 module.exports = router;

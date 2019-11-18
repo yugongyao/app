@@ -9,6 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogin: false,
+    userInfo: {},
     starUsers: []
   },
   mutations: {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     },
     setStarUsers(state, payload){
       state.starUsers = payload;
+    },
+    setUserInfo(state, payload){
+      state.userInfo = payload;
     }
   },
   actions: {
@@ -31,7 +35,22 @@ export default new Vuex.Store({
       } catch (error) {
           throw  new Error(error);
       }
+    },
+
+    // 获取用户名
+    async requestUserInfo(context){
+      try {
+        var result = await Http.get(api.REQUEST_USERINFO);
+        console.log(result);
+        if (result.data.status==0) {
+            var data = result.data.data;
+            context.commit('setUserInfo', data);
+        }
+      } catch (error) {
+          throw  new Error(error);
+      }
     }
+
   },
   modules: {
     moments

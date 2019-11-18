@@ -36,9 +36,17 @@
 </template>
 
 <script>
+import store from '../../../store'
 import axios from "axios";
+
 export default {
-  
+  beforeRouteEnter(to, from, next) {
+    if(store.state.isLogin){
+      next();
+    } else{
+      next('/login');
+    }
+  },
   data() {
     return {
       fileList: [],
@@ -58,7 +66,7 @@ export default {
         { text: "其他", value: 10 }
       ],
       checked: true,
-      address: ""
+      address: "",
     };
   },                                                                                         
 

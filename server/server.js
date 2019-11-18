@@ -2,8 +2,7 @@ const express = require('express');
 const userRouter = require('./routes/userRouter')
 const path = require('path');
 const mongoose = require('mongoose');
-const session = require('express-session')
-const cookieParser = require('cookie-parser');
+const session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
 
 const homeRouter = require('./routes/homeRouter')

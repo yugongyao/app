@@ -13,7 +13,7 @@
           </div>
           <div class="user-name">
             <p>
-              <i>用户名user</i>
+              <i>{{userInfo.username}}</i>
             </p>
           </div>
           <div class="user-center">
@@ -69,11 +69,29 @@
   </div>
 </template>
 <script>
+import {mapState} from 'vuex';
+import store from '../../../store'
 export default {
+  beforeRouteEnter(to, from, next) {
+    if(store.state.isLogin){
+      next();
+    } else{
+      next('/login');
+    }
+  },
   data(){
     return {
       title:'我的'
     }
+  },
+  computed: {
+    ...mapState({
+      userInfo: state=>state.userInfo
+    })
+  },
+  created(){
+    console.log('执行了');
+    this.$store.dispatch('requestUserInfo');
   }
 };
 </script>
