@@ -51,15 +51,45 @@ server.use(session({
   })
 }));
 
+<<<<<<< HEAD
 // 处理静态资源
 server.use(express.json());
 // 处理post参数
 
 
+=======
+>>>>>>> 6d9ace70584a45a16b837f5e0b894c93466dc4d4
 // 处理请求
 server.use('/api/user', userRouter);
 server.use('/api/home', homeRouter);
+server.use('/api/recommend_users', (req,res)=>{
+  const {starUsers} = require('./model/mockData')
+  if(starUsers){
+    res.json(starUsers);
+  }
+  else{
+      res.json({
+        msg: 'Missing data...',
+        status: -1,
+        data: null
+      })
+  }
+})
 
+<<<<<<< HEAD
+=======
+// 静态资源
+server.use(express.static(
+  path.join(__dirname, 'public')
+))
+
+
+
+// 响应首页
+server.use('/', (req, res)=>{
+  res.sendFile( path.join(__dirname + '/public/index.html') );
+});
+>>>>>>> 6d9ace70584a45a16b837f5e0b894c93466dc4d4
 
 
 // 连接数据库，连接成功再开启服务
