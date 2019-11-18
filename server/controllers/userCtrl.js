@@ -43,7 +43,7 @@ var emailVerify = async (req, res, next)=>{
     // 验证码保存在session里
     req.session.code = code;
     req.session.email = email;
-
+    
     // 要发送的字段
     var mailOptions = {
         from: '邮箱验证 <blossomyclover@163.com>',
@@ -79,7 +79,7 @@ var regiester = async (req, res, next)=>{
     var { username, email, password, code } = req.body;
     console.log(req.session.code);
     
-    if( email !== req.session.email || code !== req.session.code ) {
+    if( (email !== req.session.email) || (code !== req.session.code) ) {
         res.json({
             message: '验证码错误',
             status: -1
@@ -126,10 +126,27 @@ var logout = async (req, res)=>{
     })
 }
 
+var userInfo = async (req, res)=>{
+    if(req.session.userInfo){
+        res.json({
+            status: 0,
+            msg: 'ok',
+            data: req.session.userInfo
+        })
+    } else {
+        res.json({
+            status: -1,
+            msg: '请重新登录',
+            data: null
+        })
+    }
+}
+
 module.exports = {
     login,
     regiester,
     emailVerify,
     checkLogin,
-    logout
+    logout,
+    userInfo
 }

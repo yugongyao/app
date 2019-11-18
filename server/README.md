@@ -75,7 +75,23 @@
 }
 ```
 
+### 获取用户信息
 
+**method:** get
+
+**url:** /api/user/userinfo
+
+**参数:** 无
+
+**返回值:**
+
+```json
+{
+	msg: '没过期 || 已过期',
+  status: 0 || -1,
+  data: null
+}
+```
 
 ### 登出
 
