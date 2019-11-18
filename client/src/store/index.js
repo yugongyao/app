@@ -41,6 +41,7 @@ export default new Vuex.Store({
     async requestUserInfo(context){
       try {
         var result = await Http.get(api.REQUEST_USERINFO);
+        console.log(result);
         if (result.data.status==0) {
             var data = result.data.data;
             context.commit('setUserInfo', data);

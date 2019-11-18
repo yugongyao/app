@@ -1,6 +1,6 @@
 <template>
   <section id="starUsers">
-    <van-swipe style="height: 170px;width: 100%;" vertical :autoplay="12000" :duration="800">
+    <van-swipe style="height: 170px;width: 100%;" vertical :autoplay="13000" :duration="12000" :show-indicators="false">
         <van-swipe-item>
             <div class="box" v-for="item in list1" :key="item.id">
                 <div class="user">

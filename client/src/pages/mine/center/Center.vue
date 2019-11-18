@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="user-main">
-      <h2 class="user-name fontXing">用户名user</h2>
+      <h2 class="user-name fontXing">{{userInfo.username}}</h2>
       <div class="user-edit fontXing"><router-link to="/mine/center/edit">编辑资料</router-link></div>
     </div>
     <div class="user-tab">
@@ -30,7 +30,8 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex';
+import store from '../../../store'
 import issueList from './children/issue-list'
 
 export default {
@@ -45,7 +46,12 @@ export default {
   },
   methods:{
 
-  }
+  },
+  computed: {
+    ...mapState({
+      userInfo: state=>state.userInfo
+    })
+  },
 }
 </script>
 
