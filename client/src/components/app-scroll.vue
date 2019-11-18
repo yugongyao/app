@@ -1,31 +1,32 @@
 <template>
-<div class="app-scroll" ref="scroll">
-  <div class="scoll-wrap">
-    <slot/>
+  <div class="app-scroll" ref="scroll" >
+    <div class="scoll-wrap">
+      <slot />
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
+import BScroll from "better-scroll";
 export default {
-  name: 'app-scroll',
-  mounted(){
+  name: "app-scroll",
+  mounted() {
     // 创建滚动视图
     this.scroll = new BScroll(this.$refs.scroll, {
       tap: true,
-      click: true
+      click: true,
+      probeType:1
     });
-    // 如果需要滚动，先刷新滚动视图，就可以在可滚动范围内滚动
-    this.scroll.on('beforeScrollStart', ()=>{
-      this.scroll.refresh();
+    this.scroll.on("scroll", pos => {
+      console.log(pos.y);
+      this.$emit('sendY',true);
     });
   }
 };
 </script>
 
 <style scoped>
-.app-scroll{
+.app-scroll {
   overflow: hidden;
 }
 </style>

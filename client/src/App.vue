@@ -3,6 +3,8 @@
     <keep-alive>
       <router-view v-if="!other"></router-view>
     </keep-alive>
+    <router-view name="inform"></router-view>
+    <router-view name="topic"></router-view>
     <transition enter-active-class="slideInUp" leave-active-class="slideOutDown">
       <router-view v-if="other"></router-view>
     </transition>

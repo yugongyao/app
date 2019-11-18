@@ -49,7 +49,8 @@ export default {
 
     $route: {
       handler:function(newRouter,oldRouter) {
-        // console.log(newRouter);
+        console.log(newRouter);
+        console.log(123456);
         
       if (newRouter.path.startsWith("/inform/detail")||newRouter.path.startsWith("/inform/chat")) {
         this.other = true;
