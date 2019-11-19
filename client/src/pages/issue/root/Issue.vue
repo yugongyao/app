@@ -36,15 +36,15 @@
 </template>
 
 <script>
-import store from '../../../store'
+import store from "../../../store";
 import axios from "axios";
 
 export default {
   beforeRouteEnter(to, from, next) {
-    if(store.state.isLogin){
+    if (store.state.isLogin) {
       next();
-    } else{
-      next('/login');
+    } else {
+      next("/login");
     }
   },
   data() {
@@ -67,8 +67,9 @@ export default {
       ],
       checked: true,
       address: "",
+      url: ""
     };
-  },                                                                                         
+  },
 
   methods: {
     uploaderAction() {
@@ -79,16 +80,22 @@ export default {
       } else {
         this.$Toast.loading("正在发布...");
         var formData = new FormData();
+        var baseImg = [];
         //  将所有图片挂到formData上
         this.fileList.forEach(item => {
           formData.append("img", item.file);
+          baseImg.push(this.fileList.value);
         });
-        // 将所有信息挂载到formData
+
+        const v = document.querySelector(".van-uploader__input").value;
+        console.log(v);
 
         formData.append("desc", this.$refs.desc.value);
         formData.append("address", this.address);
         formData.append("theme", this.option1[this.value1].text);
         formData.append("pro", this.checked);
+
+        var self = this;
 
         // 开始上传
         let config = {
@@ -96,13 +103,30 @@ export default {
           headers: { "Content-Type": "multipart/form-data" }
         };
         axios
-          .post("http://localhost:3000/upload/img", formData, config)
+          .post("http://localhost:4000/upload/img", formData, config)
           .then(function(response) {
+            var data = {
+              img: response.data,
+              desc: self.$refs.desc.value,
+              address: self.address,
+              pro: self.option1[self.value1].text,
+              checked: self.checked
+            };
+
+            if (!storage.get("soso")) {
+              storage.set("soso", []);
+            }
+
+            var localData = storage.get("soso");
+
+            localData.push(data);
+            // console.log(localData);
+            storage.set("soso", localData);
             this.$Toast.clear();
-            console.log(response);
+            this.$router.push("/home");
           })
           .catch(function(error) {
-            alert("上传失败！");
+            // alert("上传失败！");
             console.log(error);
           });
         // console.log(formData.get("img"));
@@ -154,17 +178,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .content {
-    position: absolute;
-    top: 45px;
-    bottom: 49px;
-    width: 100%;
+.content {
+  position: absolute;
+  top: 45px;
+  bottom: 49px;
+  width: 100%;
 
-    &.noBar {
-      bottom: 0;
-      z-index: 200;
-    }
+  &.noBar {
+    bottom: 0;
+    z-index: 200;
   }
+}
 #issue {
   height: 100%;
   width: 100%;

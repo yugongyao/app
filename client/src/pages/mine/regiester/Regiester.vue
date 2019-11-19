@@ -100,7 +100,7 @@ export default {
       }
       else {
         let result = await Http.post(API.REGIESTER_API, {username, email, password, code});
-        await this.$Toast(result.data.msg);
+        await this.$Toast(result.data.message);
         if (result.data.status===0){
           this.$router.push('/login');
         }
