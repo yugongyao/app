@@ -16,6 +16,6 @@ var data = Mock.mock({
     ]
 })
 
-console.log(data);
+// console.log(data);
 
 module.exports = data;

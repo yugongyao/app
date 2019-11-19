@@ -8,12 +8,12 @@
         <div class="user card fontXing">
           <div class="user-icon">
             <p>
-              <img src="../../../assets/star.jpg" alt />
+              <img src="../../../assets/t2.jpg" alt />
             </p>
           </div>
           <div class="user-name">
             <p>
-              <i>用户名user</i>
+              <i>{{userInfo.username}}</i>
             </p>
           </div>
           <div class="user-center">
@@ -69,11 +69,29 @@
   </div>
 </template>
 <script>
+import {mapState} from 'vuex';
+import store from '../../../store'
 export default {
+  beforeRouteEnter(to, from, next) {
+    if(store.state.isLogin){
+      next();
+    } else{
+      next('/login');
+    }
+  },
   data(){
     return {
       title:'我的'
     }
+  },
+  computed: {
+    ...mapState({
+      userInfo: state=>state.userInfo
+    })
+  },
+  created(){
+    console.log('执行了');
+    this.$store.dispatch('requestUserInfo');
   }
 };
 </script>
@@ -83,10 +101,10 @@ export default {
   color: red;
 }
 .page {
-  background: url(../../../assets/mine1.jpg) no-repeat;
+  background: url(../../../assets/t4.jpg) no-repeat;
   background-size: 100% 100%;
   .topColor{
-    color: #ddd;
+    color: #333;
   }
 }
 .page-content {
@@ -109,7 +127,7 @@ export default {
   padding-top: 10px;
   width: 100%;
   height: 200px;
-  background: rgba(0, 0, 0, 0.3);
+  // background: rgba(0, 0, 0, 0.3);
   margin-top: 20px;
   .user-icon {
     width: 100%;
@@ -144,7 +162,9 @@ export default {
       line-height: 30px;
       text-align: center;
       i {
-        color: #ddd;
+        color: #000;
+        font-size: 17px;
+        font-weight: bold;
       }
     }
   }
@@ -153,15 +173,16 @@ export default {
     height: 40px;
     p {
       width: 100%;
-      height: 40px;
-      line-height: 40px;
+      height: 30px;
+      line-height: 30px;
       text-align: center;
       .link-center {
-        color: #ddd;
-        font-size: 12px;
+        color: #000;
+        font-size: 14px;
+
       }
       span {
-        color: #ddd;
+        color: #000;
         font-size: 12px;
       }
     }
@@ -175,37 +196,37 @@ export default {
       line-height: 40px;
       text-align: center;
       flex: 1;
-      color: #ddd;
+      color: #444;
       span {
         padding-right: 5px;
-        color: #ddd;
+        color: #444;
       }
       a {
-        color: #ddd;
+        color: #444;
       }
     }
     .user-line {
       height: 40px;
       width: 1px;
-      background: #ddd;
+      background: #444;
     }
   }
 }
 .other {
   margin-top: 20px;
   padding: 0px 20px;
-  background: rgba(0, 0, 0, 0.3);
+  // background: rgba(0, 0, 0, 0.3);
   .other-item {
     line-height: 30px;
     text-align: center;
     a {
       font-size: 14px;
-      color: #ddd;
+      color: #444;
     }
     span {
       float: right;
       font-size: 12px;
-      color: #ddd;
+      color: #444;
     }
   }
 }
@@ -216,7 +237,7 @@ export default {
   width: 100%;
   h4 {
     font-size: 12px;
-    color: #ddd;
+    color: #444;
     text-align: center;
     text-shadow: 2px 2px #777;
   }

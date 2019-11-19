@@ -43,6 +43,8 @@ export default {
 
 <style lang="scss" scoped>
 .scroll {
+  background: url(../../../assets/t4.jpg) no-repeat;
+  background-size:100% 100%;
   position: absolute;
   top: 0px;
   bottom: 0px;

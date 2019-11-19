@@ -7,6 +7,6 @@ export default {
       path: 'bannerDetail/:id',
       props: true,
       component: () => import('../pages/home/bannerDetail/BannerDetail')
-    }
+    },
   ]
 }

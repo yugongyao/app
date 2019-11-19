@@ -4,7 +4,9 @@
       <!-- <app-tab></app-tab> -->
       <van-tabs class="content border-bottom" v-model="active" swipeable>
         <van-tab v-for="(item,index) in list" :title="item.title" :to="item.link" :key="index">
-          <router-view :name="item.title=='互动'?'interact':'letter'"></router-view>
+          <keep-alive>
+            <router-view :name="item.title=='互动'?'interact':'letter'"></router-view>
+          </keep-alive>
         </van-tab>
       </van-tabs>
       <!-- <div class="content noBar">
@@ -18,7 +20,16 @@
 </template>
 
 <script>
+import store from '../../../store'
+
 export default {
+  beforeRouteEnter(to, from, next) {
+    if(store.state.isLogin){
+      next();
+    } else{
+      next('/login');
+    }
+  },
   data() {
     return {
       active: 2,
@@ -31,12 +42,15 @@ export default {
     };
   },
   watch: {
-    active() {
-      if (this.active == 1 && this.$route.path == "/inform/interact") {
-        this.$router.push("/inform/letter");
-      } else if (this.active == 0 && this.$route.path == "/inform/letter") {
-        this.$router.push("/inform/interact");
-      }
+    active: {
+      handler: function() {
+        if (this.active == 1 && this.$route.path == "/inform/interact") {
+          this.$router.push("/inform/letter");
+        } else if (this.active == 0 && this.$route.path == "/inform/letter") {
+          this.$router.push("/inform/interact");
+        }
+      },
+      immediate: true
     },
     // $route(to, from) {
 
@@ -48,23 +62,22 @@ export default {
     // }
 
     $route: {
-      handler:function(newRouter,oldRouter) {
-        console.log(newRouter);
-        console.log(123456);
-        
-      if (newRouter.path.startsWith("/inform/detail")||newRouter.path.startsWith("/inform/chat")) {
-        this.other = true;
-      } else {
-        this.other = false;
-      }
-    },
-      immediate:true
+      handler: function(newRouter, oldRouter) {
+        // console.log(newRouter);
+        if (
+          newRouter.path.startsWith("/inform/detail") ||
+          newRouter.path.startsWith("/inform/chat")
+        ) {
+          this.other = true;
+        } else {
+          this.other = false;
+        }
+      },
+      immediate: true
     }
   },
-  methods:{
-    
-  }
-}
+  methods: {}
+};
 </script>
 
 <style lang="scss" scoped>

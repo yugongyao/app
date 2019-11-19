@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import plugin from './plugin'
 import App from './App.vue'
+import Http from './utils/Http'
+import Api from './utils/api'
 import router from './router'
 import store from './store'
 import './style/common.scss'
-
+Vue.prototype.$Http = Http;
+Vue.prototype.$Api = Api;
 Vue.use(plugin);
 Vue.config.productionTip = false
 

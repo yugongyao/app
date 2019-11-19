@@ -23,7 +23,7 @@
         <p>唯望此爱爱未老</p>
         <p>愿意今生约定他生再拥抱~</p>
       </div>
-      <commentList/>
+      <commentList />
     </app-scroll>
   </div>
 </template>
@@ -39,21 +39,23 @@ export default {
       title: "话题",
       hasBack: true
     };
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 #topicDetail {
+  background: url(../../../assets/t4.jpg) no-repeat;
+  background-size: 100% 100%;
   position: absolute;
   top: 0px;
   bottom: 0px;
-  background: #fff;
   width: 100%;
   z-index: 200;
   .content {
     top: 0 !important;
-    background: #d5d5d5;
+    background: url(../../../assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
   }
   .topColor {
     color: #333;
@@ -107,7 +109,7 @@ export default {
     min-height: 100px;
     box-shadow: 2px 2px 5px #999;
     margin-bottom: 10px;
-    p{
+    p {
       line-height: 30px;
       color: #727272;
     }

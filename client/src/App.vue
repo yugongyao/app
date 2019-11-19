@@ -14,6 +14,7 @@
 </template>
 
 <script>
+
 import TabBar from "./components/tab-bar";
 export default {
   components: {

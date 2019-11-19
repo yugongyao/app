@@ -17,10 +17,10 @@ export default {
       click: true,
       probeType:1
     });
-    this.scroll.on("scroll", pos => {
-      // console.log(pos.y);
-      // this.$emit('sendY',true);
-    });
+    // this.scroll.on("scroll", pos => {
+    //   // console.log(pos.y);
+    //   // this.$emit('sendY',true);
+    // });
   }
 };
 </script>
