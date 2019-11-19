@@ -81,9 +81,12 @@ var emailVerify = async (req, res, next)=>{
 var regiester = async (req, res, next)=>{
 
     // 前端传输的参数，邮箱、密码、验证码
+    console.log(req.body);
+    
     var { username, email, password, code } = req.body;
-    console.log(username, email, password, code);
-    console.log(req.session);
+ ;
+    console.log(req.session.email);
+    console.log(req.session.code);
     
     if( (email !== req.session.email) || (code !== req.session.code) ) {
         res.json({

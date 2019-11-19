@@ -8,7 +8,9 @@
     <div class="form-group">
       <input class="form-contrl" type="email" placeholder="请输入邮箱号" v-model="tel"/>
     </div>
-    
+    <div class="form-group">
+      <input class="form-contrl" type="password" placeholder="请输入密码" v-model="psd"/>
+    </div>
     <div class="form-group">
       <input class="form-contrl" type="password" placeholder="请确认密码" v-model="rePsd"/>
     </div>
@@ -98,7 +100,7 @@ export default {
       }
       else {
         let result = await Http.post(API.REGIESTER_API, {username, email, password, code});
-        await this.$Toast(result.data.msg);
+        await this.$Toast(result.data.message);
         if (result.data.status===0){
           this.$router.push('/login');
         }
