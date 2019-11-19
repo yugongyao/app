@@ -106,6 +106,8 @@ export default {
           .post("http://localhost:4000/upload/img", formData, config)
           .then(function(response) {
             var data = {
+
+              username:store.state.userInfo.username,
               img: response.data,
               desc: self.$refs.desc.value,
               address: self.address,
