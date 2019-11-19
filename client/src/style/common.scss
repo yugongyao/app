@@ -9,7 +9,9 @@ span.van-dropdown-menu__title {
   font-size: 13px !important;
   color: #1989fa;
 }
-
+#home .van-tabs__content{
+  position: static;
+}
 .van-tabs__content {
   position: absolute;
   top: 45px;

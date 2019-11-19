@@ -29,10 +29,18 @@
 </template>
 
 <script>
+import store from '../../../store'
 import commentList from "./children/comment-list";
 export default {
   components: {
     commentList
+  },
+   beforeRouteEnter(to, from, next) {
+    if(store.state.isLogin){
+      next();
+    } else{
+      next('/login');
+    }
   },
   data() {
     return {

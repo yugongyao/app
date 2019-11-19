@@ -4,12 +4,52 @@ const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
+var bodyParser = require("body-parser");
 
 const homeRouter = require('./routes/homeRouter')
 
 // const {} = require('./utils/config')
 
+const WebSocket = require('ws');
+
+
+// 构建websocket通信服务器
+const ws = new WebSocket.Server({
+  port: 9001
+});
+
+const arr = [];
+
+// 监听客户端的连接
+ws.on('connection', (socket) => {
+  console.log('有人上线了');
+  arr.push(socket);
+
+  socket.on('message', (data) => {
+    //客户端发送的信息
+    console.log(data);
+
+    // 告诉其他的客户端该客户端发了什么信息
+    arr.forEach(item => {
+      item !== socket && item.send(data);
+    })
+
+  })
+
+})
 const server = express();
+// paser('this is a string key');
+
+// parse application/x-www-form-urlencoded
+server.use(bodyParser.urlencoded({
+  extended: false
+}))
+// parse application/json
+server.use(bodyParser.json())
+// server.use(express.urlencoded({
+//   urlencoded: false,
+//   extended: true
+// }));
 //设置允许跨域访问该服务.
 server.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -21,10 +61,8 @@ server.all('*', function (req, res, next) {
 });
 
 
-server.use(express.urlencoded({
-  urlencoded: false,
-  extended: true
-}));
+
+
 
 // var store = new MongoDBStore({
 //   uri: 'mongodb://localhost:27017/account',
