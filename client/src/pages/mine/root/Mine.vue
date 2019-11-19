@@ -90,7 +90,6 @@ export default {
     })
   },
   created(){
-    console.log('执行了');
     this.$store.dispatch('requestUserInfo');
   }
 };

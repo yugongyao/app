@@ -8,7 +8,7 @@
         <div class="tip">
           <span>发布:</span>
         </div>
-        <h2 class="item-name fontXing">用户名user</h2>
+        <h2 class="item-name fontXing">{{userInfo.username}}</h2>
       </div>
       <p class="inner text-overflow">用户发表的动态的文字描述</p>
       <p class="tag fontXing">
@@ -26,7 +26,14 @@
 </template>
 
 <script>
-export default {};
+import {mapState} from 'vuex';
+export default {
+  computed:{
+    ...mapState({
+      userInfo: state=>state.userInfo
+    })
+  }
+};
 </script>
 
 <style scoped lang="scss">

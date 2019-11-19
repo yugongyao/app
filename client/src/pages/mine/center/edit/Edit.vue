@@ -72,7 +72,14 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
+
 export default {
+   computed:{
+    ...mapState({
+      userInfo: state=>state.userInfo
+    })
+  },
   data() {
     return {
       title: "编辑个人资料",
@@ -131,8 +138,12 @@ export default {
       return year + "年" + month + "月" + day + "日";
     }
   },
+  created(){
+    this.$store.dispatch('requestUserInfo');
+  },
   mounted() {
     this.timeFormat(new Date());
+    this.username = this.userInfo.username;
   }
 };
 </script>

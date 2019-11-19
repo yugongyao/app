@@ -13,6 +13,11 @@
 
 <script>
 import TabBar from "./components/tab-bar";
+import store from "./store/index";
+
+import api from './utils/api';
+import Http from './utils/Http';
+
 export default {
   components: {
     [TabBar.name]: TabBar
@@ -40,6 +45,17 @@ export default {
           this.other = false;
         }
       },
+  },
+  async mounted(){
+    let result = await Http.get(api.CHECK_LOGIN);
+    console.log(result);
+    
+    if(result.data.status == 0){
+      this.$store.commit('setLogin',true);
+      this.$store.dispatch('requestUserInfo');
+    } else {
+      this.$store.commit('setLogin',true);
+    }
   }
 };
 </script>
