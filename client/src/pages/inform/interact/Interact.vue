@@ -105,6 +105,8 @@ export default {
 #interact {
   .scroll {
     position: absolute;
+    background: url(../../../assets/t4.jpg) center center;
+    background-size: cover;
     top: 0px;
     bottom: 0px;
     width: 100%;
@@ -117,6 +119,7 @@ export default {
       padding: 10px 16px 10px 10px;
       box-sizing: border-box;
       display: flex;
+      background: rgba(0, 0, 0, 0.06);
       .headImg {
         width: 40px;
         height: 40px;
@@ -150,7 +153,7 @@ export default {
           color: #222;
         }
         .essay {
-          background: #eeeeee;
+          // background: rgba(187, 187, 187, 0.829);
           margin-top: 6px;
           width: 100%;
           height: 100px;

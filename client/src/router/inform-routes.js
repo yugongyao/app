@@ -1,6 +1,8 @@
 export default {
   path: '/inform',
-  component: () => import('../pages/inform/root/Inform'),
+  components: {
+    inform:() => import('../pages/inform/root/Inform'),
+  },
   redirect: "/inform/interact",
   children: [{
       // 互动

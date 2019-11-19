@@ -51,6 +51,10 @@ export default {
   },
   methods: {
     sendAction() {
+      if(!this.words){
+        this.$Toast("请输入些内容吧！");
+        return;
+      }
       var thisWord = {
           time: (new Date()).getTime(),
           data: this.words,
@@ -78,7 +82,7 @@ export default {
       this.wrapHeight = parseInt(
         getComputedStyle(this.$refs.content, null).getPropertyValue("height")
       );
-      console.log(this.wrapHeight);
+      // console.log(this.wrapHeight);
       
       this.$refs.wrap.scrollTop = this.wrapHeight;
     },
@@ -107,11 +111,17 @@ export default {
         window.localStorage.setItem("chatData",JSON.stringify(dataArr));
       }
   },
+  // created(){
+  //   this.setScrollAction();
+
+  // },
   mounted() {
     if(!window.localStorage.getItem("chatData")){
       window.localStorage.setItem("chatData","[]");
     }
-    this.setScrollAction();
+    setTimeout(() => {
+          this.setScrollAction();
+      }, 0);
     this.wordData = JSON.parse(window.localStorage.getItem("chatData"));
     this.textareaWidth =
       parseInt(
@@ -135,6 +145,8 @@ export default {
   //   padding: 0 10px;
   //   box-sizing: border-box;
   .chat-panel {
+  background: url(../../../assets/t4.jpg) no-repeat;
+  background-size: 100% 100%;
     transition: bottom 0.5s;
     position: absolute;
     top: 45px;
@@ -181,6 +193,7 @@ export default {
               padding: 3px 6px;
               border-radius: 8px;
               border:1px solid #ccc;
+              word-break:break-all;
           }
           span.right{
               float: right;

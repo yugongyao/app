@@ -9,7 +9,7 @@
       <input class="form-contrl" type="email" placeholder="请输入邮箱号" v-model="tel"/>
     </div>
     <div class="form-group">
-      <input class="form-contrl" type="password" placeholder="请设置密码" v-model="psd"/>
+      <input class="form-contrl" type="password" placeholder="请输入密码" v-model="psd"/>
     </div>
     <div class="form-group">
       <input class="form-contrl" type="password" placeholder="请确认密码" v-model="rePsd"/>
@@ -25,7 +25,7 @@
     
 
   </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -36,24 +36,35 @@ import {Field, CellGroup} from 'vant'
 export default {
   components: {
     [Field.name]: Field,
-    [CellGroup.name]: CellGroup,
+    [CellGroup.name]: CellGroup
   },
-  data(){
+  data() {
     return {
       tip: '发送',
       user:'',
       tel: '',
       getCode: null,
-      code: '',
-      psd: '',
-      rePsd: ''
-    }
+      code: "",
+      psd: "",
+      rePsd: ""
+    };
   },
-  methods:{
-    goLoginAction(){
-      this.$router.push('/login');
+  methods: {
+    toast(status,tip){
+      if (status == 0) {
+        this.$Toast(tip[0]);
+      } else if(status==-1) {
+        this.$Toast(tip[1]);
+      }else if(status==-2){
+        this.$Toast(tip[2]);
+      }else{
+        this.$Toast("未知错误请重试");
+      }
     },
-    goBack(){
+    goLoginAction() {
+      this.$router.push("/login");
+    },
+    goBack() {
       this.$router.back();
     },
 
@@ -97,30 +108,30 @@ export default {
     }
 
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
-.btn{
+.btn {
   position: absolute;
   left: 10px;
   top: 10px;
   padding: 5px;
-  span{
+  span {
     font-size: 20px;
     color: #ccc;
   }
 }
-.content{
+.content {
   margin-top: 50px;
   padding: 20px;
   box-sizing: border-box;
-  .form-group{
-    input{
-      background:rgba($color: #000000, $alpha: 0);
-      color:#ddd;
+  .form-group {
+    input {
+      background: rgba($color: #000000, $alpha: 0);
+      color: #ddd;
     }
-    input::-webkit-input-placeholder{
+    input::-webkit-input-placeholder {
       color: #ddd;
       font-family: STXingkai;
     }
