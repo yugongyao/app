@@ -12,7 +12,7 @@
               <span class="left">20:03</span>
               <span class="right iconfont icon-you"></span>
             </p>
-            <p class="letterText text-overflow">y按时大大发光时代奉公守法广东省</p>
+            <p class="letterText text-overflow" ref="nowWords">y按时大大发光时代奉公守法广东省</p>
           </div>
         </li>
         <div class="footerEnd">
@@ -29,6 +29,11 @@ export default {
     chatAction() {
       this.$router.push("/inform/chat/1");
     }
+  },
+  mounted(){
+    let d = JSON.parse(window.localStorage.getItem("chatData"));
+    
+    
   }
 };
 </script>

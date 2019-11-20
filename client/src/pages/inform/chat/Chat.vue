@@ -22,6 +22,7 @@
 
 <script>
 import OneWord from "./children/one-word";
+import store from "../../../store";
 export default {
   components: {
     [OneWord.name]: OneWord
@@ -56,6 +57,7 @@ export default {
         return;
       }
       var thisWord = {
+          username:store.state.userInfo.username,
           time: (new Date()).getTime(),
           data: this.words,
           img: "/assets/logo.png",

@@ -77,8 +77,11 @@
             </p>
           </div>
         </div>
-        <div class="toLogin" @click="goLogin">
+        <div v-if="!isLogin" class="toLogin" @click="goLogin">
           <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large">{{login}}</van-button>
+        </div>
+        <div v-if="isLogin" class="toLogin" @click="goOut">
+          <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large">退出登录</van-button>
         </div>
         <div class="end">
           <p class="fontXing">-The End-</p>
@@ -89,13 +92,15 @@
 </template>
 
 <script>
+import store from "../../../store";
 export default {
   data() {
     return {
       title: "设置中心",
       hasBack: true,
       checked1: true,
-      login: "登录"
+      login: "登录",
+      isLogin:store.state.isLogin
     };
   },
   methods: {
@@ -104,6 +109,10 @@ export default {
     },
     goCenter() {
       this.$router.push(`/mine/center`);
+    },
+    goOut(){
+      store.commit('setLogin',false);
+      this.$router.push("/login")
     }
   }
 };
