@@ -15,6 +15,22 @@ const User = mongoose.model('user', new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    birthday: {
+        type: String,
+        required: false,
+    },
+    sexID: {
+        type: String,
+        default: "男"
+    },
+    desc: {
+        type: String,
+        required: false
+    },
+    icon:{
+        type:String,
+        default: '/assets/icon.png'
     }
 }))
 
@@ -44,4 +60,17 @@ module.exports.findByUsername = async (username)=>{
 
 module.exports.findByEmailAndPsd = async (email, password)=>{
     return await User.findOne({email, password});
+}
+
+
+// 更新
+module.exports.update = async ( _id, username, sexID, birthday, desc)=>{
+    
+    var result = await User.findById(_id);
+    if(!result){
+        throw new Error('账号不存在或数据库出错');
+    } else{
+        return User.findByIdAndUpdate(_id, {username, sexID, birthday, desc})
+    }
+    
 }

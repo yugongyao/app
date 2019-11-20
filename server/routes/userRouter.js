@@ -22,4 +22,7 @@ router.get('/logout', userCtrl.logout)
 // 获取用户名
 router.get('/userinfo', userCtrl.userInfo)
 
+// 修改资料
+router.post('/modify', userCtrl.modify)
+
 module.exports = router;

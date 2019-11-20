@@ -82,8 +82,8 @@ var regiester = async (req, res, next)=>{
 
     // 前端传输的参数，邮箱、密码、验证码
     var { username, email, password, code } = req.body;
-    console.log(username, email, password, code);
-    console.log(req.session);
+    // console.log(username, email, password, code);
+    // console.log(req.session);
     
     if( (email !== req.session.email) || (code !== req.session.code) ) {
         res.json({
@@ -108,6 +108,28 @@ var regiester = async (req, res, next)=>{
     }
 }
 
+// 编辑资料
+var modify = async (req, res)=>{
+    var { _id, username, sexID, birthday, desc } = req.body;
+    User.update( _id, username, sexID, birthday, desc)
+    .then(()=>{
+        User.findByUsername(username)
+        .then(result=>{
+            if(result) {req.session.userInfo = result;}
+            res.json({
+                msg: '更新成功',
+                status: 0
+            })
+        });
+        
+    })
+    .catch((err)=>{
+        res.json({
+            msg: '更新失败: '+err.message,
+            status: -1
+        })
+    })
+}
 
 // 登录是否过期
 var checkLogin = async (req, res)=>{
@@ -154,5 +176,6 @@ module.exports = {
     emailVerify,
     checkLogin,
     logout,
-    userInfo
+    userInfo,
+    modify
 }

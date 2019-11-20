@@ -1,4 +1,5 @@
 <template>
+<transition enter-active-class="slideInUp" leave-active-class="slideOutDown">
 <div class="page modal-page fontXing" id="login">
   <div class="btn" @click="goBack()"><span class="iconfont icon-chahao"></span></div>
   <div class="content">
@@ -14,6 +15,7 @@
     <p class="alert-info" @click="goRegAction()">没有账号，立即注册<span class="iconfont icon-you"></span></p>
   </div>
 </div>
+</transition>
 </template>
 
 <script>
@@ -46,6 +48,8 @@ export default {
       if (result.data.status === 0){
         // 设置登录状态为true
         this.$store.commit('setLogin', true);
+        // 更新userinfo
+        this.$store.dispatch('requestUserInfo');
         setTimeout(() => {
           this.$router.push('/home');
         }, 500);

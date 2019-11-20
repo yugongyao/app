@@ -2,7 +2,7 @@
   <div class="page-wrap">
     <div class="page" id="home">
       
-        <van-tabs v-model="active" swipeable animated background="#22263f" color="#ebe" titleActiveColor="#fff" titleInactiveColor="#feeeee" id="home-tab" @click="onClick">
+        <van-tabs v-model="active" swipeable animated background="#22263f" color="#ebe" titleActiveColor="#fff" titleInactiveColor="#feeeee" id="home-tab" @change="changeAction">
           <van-tab title="精选">
               <!-- <router-link to="/home/bannerDetail/1">前往轮播详情</router-link>
               <div class="btn1" @click="goUserDetail()">前往用户详情</div>-->
@@ -78,7 +78,7 @@ export default {
     };
   },
   methods: {
-    onClick(name, title){
+    changeAction(name, title){
       if(name === 1){
         if(!store.state.isLogin){
           this.$router.push('/login');

@@ -19,6 +19,13 @@ span.van-dropdown-menu__title {
   overflow: auto;
 }
 
+#home .van-tabs__content {
+  height: 670px;
+  background: #fff;
+  width: 100%;
+  overflow: auto;
+}
+
 #inform,#home,#topic {
   .van-tabs__nav {
     position: relative;

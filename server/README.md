@@ -93,6 +93,24 @@
 }
 ```
 
+### 修改资料
+
+**method:** post
+
+**url:** /api/user/modify
+
+**参数:** _id username sexID birthday  desc
+
+**返回值:**
+
+```json
+{
+	msg: '更新成功 || 更新失败',
+  code: 0 || -1,
+  data: null
+}
+```
+
 ### 登出
 
 **method:** get

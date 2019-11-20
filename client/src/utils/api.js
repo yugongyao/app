@@ -13,6 +13,9 @@ const CHECK_LOGIN = '/api/user/check_login';
 // 请求个人信息
 const REQUEST_USERINFO = '/api/user/userinfo'
 
+// 修改编辑资料
+const EDIT_INFO = '/api/user/modify'
+
 // 首页请求动态
 const REQUEST_MOMENTS = '/api/home/moment_list';
 
@@ -31,5 +34,6 @@ export default {
     REQUEST_USERINFO,
     REQUEST_MOMENTS,
     HOT_ISSUES,
-    STAR_USERS
+    STAR_USERS,
+    EDIT_INFO
 }

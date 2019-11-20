@@ -51,13 +51,11 @@ export default {
   },
   async mounted(){
     let result = await Http.get(api.CHECK_LOGIN);
-    console.log(result);
-    
     if(result.data.status == 0){
       this.$store.commit('setLogin',true);
       this.$store.dispatch('requestUserInfo');
     } else {
-      this.$store.commit('setLogin',true);
+      this.$store.commit('setLogin',false);
     }
   }
 };
