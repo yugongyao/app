@@ -2,7 +2,7 @@
   <div id="past">
     <app-scroll class="scroll border-top fontXing">
       <div class="past-main">
-        <div class="item" v-for="(item,index) in list" :key="index" @click="goTopicDetail(index)">
+        <div class="item" v-for="(item,index) in list" :key="index" @click="goTopicDetail(item.id)">
           <div class="item-img">
             <img :src="item.img" alt />
           </div>
@@ -24,19 +24,17 @@ export default {
       list:[
         {img:'/assets/top.jpg',checked: true,desc:'寒雨连江夜入吴,平明送客楚山孤,洛阳亲友如相问,一片冰心在玉壶',pro: "分享一个好天气",address: "广东省深圳市福田区农轩路55号"}
       ],
-      length:1
     }
   },
   mounted(){
     var list=storage.get("soso");
     if (list) {
-      this.length=list.length;
       this.list=list.reverse();
     }
   },
   methods: {
     goTopicDetail(index) {
-      var id=this.length-index;
+      var id=index;
       this.$router.push(`/topic/topicDetail/${id}`);
     }
   },

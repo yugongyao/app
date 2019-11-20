@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <div class="item" v-for="item in 6" :key="item">
+    <div class="item" v-for="(item,index) in list" :key="index">
       <div class="item-top">
         <div class="item-logo">
           <img src="../../../../assets/star.jpg" alt />
@@ -10,11 +10,11 @@
         </div>
         <h2 class="item-name fontXing">用户名user</h2>
       </div>
-      <p class="inner text-overflow">用户发表的动态的文字描述</p>
+      <p class="inner text-overflow">{{item.desc}}</p>
       <p class="tag fontXing">
-        <span>标签</span>
+        <span>{{item.pro}}</span>
       </p>
-      <div class="main-img"><img src="../../../../assets/centerbg.jpg" alt=""></div>
+      <div class="main-img" @click="goInformDetail(item.id)"><img :src="item.img" alt=""></div>
       <div class="item-handle">
         <p><span class="iconfont icon-icon-test"></span><i>2</i></p>
         <p><span class="iconfont icon-pinglun"></span><i>3</i></p>
@@ -26,7 +26,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return {
+      list:[]
+    }
+  },
+  mounted(){
+    if (storage.get('soso')) {
+      var list=storage.get('soso');
+      list=list.reverse();
+      this.list=list;
+    }
+  },
+  methods:{
+    goInformDetail(index){
+      var id=index;
+      this.$router.push(`/inform/detail/${id}`);
+    }
+  }
+};
 </script>
 
 <style scoped lang="scss">

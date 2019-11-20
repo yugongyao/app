@@ -1,7 +1,7 @@
 <template>
   <div class="page modal-page" id="set">
     <app-header :title="title" :hasBack="hasBack" class="topColor border-bottom"></app-header>
-    <app-scroll class="content">
+    <app-scroll class="content bg">
       <div class="set-main">
         <div class="toCenter border-bottom" @click="goCenter">
           <div class="user-logo">
@@ -117,10 +117,15 @@ export default {
   }
 }
 #set {
+  font-size: 14px;
   .topColor {
     color: #333;
     background: #fafafa;
     box-shadow: 2px 2px 5px #999;
+  }
+  .bg {
+    background: url(../../../assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
   }
   .toLogin {
     margin-top: 20px;
@@ -200,10 +205,14 @@ export default {
           flex: 1;
           span{
             padding-right: 10px;
+            font-size: 12px;
           }
         }
       }
     }
+  }
+  .icon-you{
+    font-size: 12px;
   }
 }
 </style>

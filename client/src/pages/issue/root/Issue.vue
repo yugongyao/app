@@ -105,8 +105,14 @@ export default {
         axios
           .post("http://localhost:4000/upload/img", formData, config)
           .then(function(response) {
+            var id;
+            if (!storage.get("soso")) {
+              id=0;
+            }else{
+              id=storage.get("soso").length;
+            }
             var data = {
-
+              id,
               username:store.state.userInfo.username,
               img: response.data,
               desc: self.$refs.desc.value,
