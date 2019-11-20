@@ -91,28 +91,7 @@ export default {
 
     
   },
-  beforeCreate(){
-    this.ws = new WebSocket('ws://10.20.152.18:9001');
-      this.ws.onopen = () => {
-      console.log('上线了');
-      }
 
-      this.ws.onerror = () => {
-      console.log('断线了');
-      }
-
-      this.ws.onclose = () => {
-      console.log('下线了');
-      }
-
-      this.ws.onmessage = (ev) => {
-        var dataArr = JSON.parse(window.localStorage.getItem("chatData"))
-        var data = JSON.parse(ev.data);
-        dataArr.push(data);
-        this.wordData = dataArr;
-        window.localStorage.setItem("chatData",JSON.stringify(dataArr));
-      }
-  },
   // created(){
   //   this.setScrollAction();
 
