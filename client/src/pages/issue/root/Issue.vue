@@ -124,8 +124,12 @@ export default {
             localData.push(data);
             // console.log(localData);
             storage.set("soso", localData);
-            this.$Toast.clear();
-            this.$router.push("/home");
+            self.$router.push('/topic/today');
+            console.log(111);
+            
+            // this.$router.push("/home");
+            self.$Toast.clear();
+            
           })
           .catch(function(error) {
             // alert("上传失败！");
@@ -133,6 +137,7 @@ export default {
           });
         // console.log(formData.get("img"));
       }
+     
     },
     geoAction() {
       this.$Toast.loading({

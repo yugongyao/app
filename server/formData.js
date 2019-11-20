@@ -20,8 +20,10 @@ module.exports = () => (req, res, next) => {
                 // 权限问题
                 //    fs.renameSync(files.img[i].path, paths.join(__dirname, paths.basename(files.img[i].path)))
                 var oldPath = files.img[i].path;
-                var newPath = paths.join(__dirname, 'img', paths.basename(files.img[i].path))
-                allPath.push(newPath);
+                var newPath = paths.join(__dirname, '../client/public/assets', paths.basename(files.img[i].path))
+                console.log(newPath);
+                
+                allPath = (paths.join('/assets', paths.basename(files.img[i].path)));
                 var readStream = fs.createReadStream(oldPath)
                 var writeStream = fs.createWriteStream(newPath);
     

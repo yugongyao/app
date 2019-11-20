@@ -90,7 +90,7 @@ export default {
     
   },
   beforeCreate(){
-    this.ws = new WebSocket('ws://10.20.152.18:9001');
+    this.ws = new WebSocket('ws://10.20.152.4:9001');
       this.ws.onopen = () => {
       console.log('上线了');
       }

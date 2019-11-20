@@ -2,13 +2,13 @@
   <div id="past">
     <app-scroll class="scroll border-top fontXing">
       <div class="past-main">
-        <div class="item" v-for="item in 10" :key="item" @click="goTopicDetail">
+        <div class="item" v-for="(item,index) in list" :key="index" @click="goTopicDetail(index)">
           <div class="item-img">
-            <img src="../../../assets/top.jpg" alt />
+            <img :src="item.img" alt />
           </div>
           <div class="item-inner">
-            <p class="item-title more-overflow">打动过你的经典老歌</p>
-            <p class="item-icon more-overflow">哈哈红哈哈</p>
+            <p class="item-title more-overflow">{{item.pro}}</p>
+            <p class="item-icon more-overflow">{{item.address}}</p>
           </div>
         </div>
       </div>
@@ -19,11 +19,28 @@
 
 <script>
 export default {
-  methods: {
-    goTopicDetail() {
-      this.$router.push("/topic/topicDetail/1");
+  data(){
+    return {
+      list:[
+        {img:'/assets/top.jpg',checked: true,desc:'寒雨连江夜入吴,平明送客楚山孤,洛阳亲友如相问,一片冰心在玉壶',pro: "分享一个好天气",address: "广东省深圳市福田区农轩路55号"}
+      ],
+      length:1
     }
-  }
+  },
+  mounted(){
+    var list=storage.get("soso");
+    if (list) {
+      this.length=list.length;
+      this.list=list.reverse();
+    }
+  },
+  methods: {
+    goTopicDetail(index) {
+      var id=this.length-index;
+      this.$router.push(`/topic/topicDetail/${id}`);
+    }
+  },
+
 };
 </script>
 

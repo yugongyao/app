@@ -3,9 +3,9 @@
     <app-header :title="title" :hasBack="hasBack" class="topColor"></app-header>
     <app-scroll class="content">
       <div class="top-bg">
-        <img src="../../../assets/top.jpg" alt />
+        <img :src="imgPic" alt />
         <div class="bg-txt">
-          <p class="title">打动过你的经典老歌</p>
+          <p class="title">{{topTitle}}</p>
           <p class="icon">
             相关主题:
             <span>
@@ -13,15 +13,13 @@
               <i>生活</i>
             </span>
           </p>
+          <div class="collect"><i>收藏主题:</i>
+            <span class="iconfont icon-shoucang" ref="coll" @click="topCollect"></span>
+          </div>
         </div>
       </div>
       <div class="topic-inner">
-        <p>风里笑着风里唱</p>
-        <p>感激天意碰见你</p>
-        <p>纵使苦涩都变得美</p>
-        <p>天也老任海也老</p>
-        <p>唯望此爱爱未老</p>
-        <p>愿意今生约定他生再拥抱~</p>
+        <p v-for="(item,index) in article" :key="index">{{item}}</p>
       </div>
       <commentList />
     </app-scroll>
@@ -44,9 +42,63 @@ export default {
   },
   data() {
     return {
+      id:1,
       title: "话题",
-      hasBack: true
+      hasBack: true,
+      topTitle:'打动过你的经典老歌',
+      imgPic:'/assets/top.jpg',
+      article: [
+        "秋兰兮麋芜",
+        "罗生兮堂下",
+        "绿叶兮素华",
+        "芳菲菲兮袭予",
+        "夫人自有兮美子",
+        "荪何㠯兮愁苦",
+        "秋兰兮青青",
+        "绿叶兮紫茎"
+      ],
+      isCollect:false
     };
+  },
+  mounted(){
+    var id=this.$route.params.topicid;
+    this.id=id;
+    // console.log(this.id);
+    
+    var list = storage.get("soso");
+    if (list) {
+      list=list[id-1];
+      // 图片
+      this.imgPic=list.img;
+      // 话题名
+      this.topTitle=list.pro;
+      //文章
+      var desc = list.desc;
+      var str = desc.split(",");
+      this.article = str;
+    }
+  },
+  methods:{
+    topCollect(){
+      var coll=this.$refs.coll
+      if (!this.isCollect) {
+        coll.style.color='red';
+        var topic=storage.get('soso');
+        topic=topic[this.id-1];
+        console.log(topic);
+        if (!storage.get('collect')) {
+          storage.set('collect',[]);
+        }
+        var collects=storage.get('collect');
+        collects.push(topic)
+        storage.set('collect',collects)
+        
+        this.isCollect=true;
+      }else{
+        coll.style.color='#fff';
+        this.isCollect=false;
+      }
+    }
   }
 };
 </script>
@@ -106,6 +158,21 @@ export default {
           i {
             padding-left: 3px;
           }
+        }
+      }
+      .collect{
+        position: absolute;
+        left: 15px;
+        bottom: 6%;
+        color: #fff;
+        font-weight: bolder;
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        span{
+          color: #fff;
+          font-size: 16px;
+          padding: 5px;
         }
       }
     }
