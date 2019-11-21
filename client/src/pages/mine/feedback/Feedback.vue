@@ -4,7 +4,7 @@
     <app-scroll class="content bg">
       <div class="main-inner">
         <div class="feed-img">
-          <img src="../../../assets/feedback.jpg" alt />
+          <img src="/assets/feedback.jpg" alt />
         </div>
         <div class="feed-title">
           <h3 class="fontXing">`P-X-C`用户反馈中心</h3>
@@ -96,7 +96,7 @@ export default {
     box-shadow: 2px 2px 5px #999;
   }
   .bg {
-    background: url(../../../assets/t4.jpg) no-repeat;
+    background: url(/assets/t4.jpg) no-repeat;
     background-size: 100% 100%;
   }
   .end{

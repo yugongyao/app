@@ -3,10 +3,10 @@
     <app-header :title="title" :hasBack="hasBack" class="topColor border-bottom"></app-header>
     <app-scroll class="content">
       <div class="vip-img">
-        <img src="../../../assets/vip.jpg" alt />
+        <img src="/assets/vip.jpg" alt />
       </div>
       <div class="vip-img2">
-        <img src="../../../assets/vip3.jpg" alt />
+        <img src="/assets/vip3.jpg" alt />
       </div>
       <div class="btn" @click="topUp">
         <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" size="large">前往充值</van-button>

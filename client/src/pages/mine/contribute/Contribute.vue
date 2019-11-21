@@ -30,7 +30,7 @@ export default {
 .page-wrap {
   z-index: 999;
   .page{
-    background: url(../../../assets/contribute.jpg) no-repeat;
+    background: url(/assets/contribute.jpg) no-repeat;
     background-size:100% 100%; 
   }
 }

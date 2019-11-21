@@ -5,9 +5,9 @@
     </app-header>
     <div class="edit-inner">
       <div class="edit-bg">
-        <img src="../../../../assets/centerbg.jpg" alt />
+        <img src="/assets/centerbg.jpg" alt />
         <p class="edit-logo">
-          <img src="../../../../assets/star.jpg" alt />
+          <img src="/assets/star.jpg" alt />
         </p>
       </div>
       <div class="edit-main fontXing">

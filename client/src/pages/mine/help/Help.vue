@@ -69,7 +69,7 @@ export default {
     box-shadow: 2px 2px 5px #999;
   }
   .bg {
-    background: url(../../../assets/t4.jpg) no-repeat;
+    background: url(/assets/t4.jpg) no-repeat;
     background-size: 100% 100%;
   }
 }

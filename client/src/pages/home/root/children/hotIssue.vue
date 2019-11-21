@@ -89,7 +89,7 @@ export default {
     top: 0;
     width: 60%;
     height: 145px;
-    background: url(../../../../assets/pic2.jpg) no-repeat;
+    background: url(/assets/pic2.jpg) no-repeat;
     background-size: 120% 170px;
     animation: moveBG 16s ease-in-out infinite;
   }
@@ -98,7 +98,7 @@ export default {
     top: 0;
     width: 38%;
     height: 85px;
-    background: url(../../../../assets/pic1.jpg) no-repeat;
+    background: url(/assets/pic1.jpg) no-repeat;
     background-size: 100% 90px;
   }
   &.rank2{
@@ -106,7 +106,7 @@ export default {
     bottom: 0;
     width: 60%;
     height: 105px;
-    background: url(../../../../assets/pic3.jpg) no-repeat;
+    background: url(/assets/pic3.jpg) no-repeat;
     background-size: 100% 120px;
   }
   &.rank4{
@@ -114,7 +114,7 @@ export default {
     bottom: 80px;
     width: 38%;
     height: 85px;
-    background: url(../../../../assets/pic4.jpg) no-repeat;
+    background: url(/assets/pic4.jpg) no-repeat;
     background-size: 100% 85px;
   }
   &.more{
@@ -125,7 +125,7 @@ export default {
     background-color: rgba(34, 49, 67, 0.743);
     
     span{
-      background: url(../../../../assets/cloud.png) no-repeat;
+      background: url(/assets/cloud.png) no-repeat;
       background-size: 236px 80px;
       animation: cloud 12s linear infinite;
     }

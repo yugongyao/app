@@ -84,11 +84,11 @@ export default {
     return {
       active: 0,
       bannerList: [
-        { id: 1, picUrl: `./assets/bg1.jpg` },
-        { id: 2, picUrl: `./assets/bg2.jpeg` },
-        { id: 3, picUrl: `./assets/bg3.jpg` },
-        { id: 4, picUrl: `./assets/bg4.jpg` },
-        { id: 5, picUrl: `./assets/bg5.jpg` }
+        { id: 1, picUrl: `/assets/bg1.jpg` },
+        { id: 2, picUrl: `/assets/bg2.jpeg` },
+        { id: 3, picUrl: `/assets/bg3.jpg` },
+        { id: 4, picUrl: `/assets/bg4.jpg` },
+        { id: 5, picUrl: `/assets/bg5.jpg` }
       ],
       isRefreshing: false,
       pullUpMsg: "上拉以刷新",
@@ -159,10 +159,10 @@ export default {
 .homeContent {
   width: 100%;
   height: 574px;
-  background: url("../../../assets/t4.jpg") no-repeat;
+  background: url("/assets/t4.jpg") no-repeat;
 }
 #home{
-  background: url("../../../assets/t4.jpg") no-repeat;
+  background: url("/assets/t4.jpg") no-repeat;
 }
 .van-loading__spinner {
   position: absolute;

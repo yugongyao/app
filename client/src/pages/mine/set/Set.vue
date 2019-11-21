@@ -5,7 +5,7 @@
       <div class="set-main">
         <div class="toCenter border-bottom" @click="goCenter">
           <div class="user-logo">
-            <img src="../../../assets/star.jpg" alt />
+            <img src="/assets/star.jpg" alt />
           </div>
           <div class="user-name">
             <p>{{$store.state.userInfo.username}}</p>
@@ -140,7 +140,7 @@ export default {
     box-shadow: 2px 2px 5px #999;
   }
   .bg {
-    background: url(../../../assets/t4.jpg) no-repeat;
+    background: url(/assets/t4.jpg) no-repeat;
     background-size: 100% 100%;
   }
   .toLogin {

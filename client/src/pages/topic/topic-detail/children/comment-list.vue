@@ -6,7 +6,7 @@
     </h2>
     <div class="item" v-for="item in 5" :key="item">
       <div class="user-img">
-        <img src="../../../../assets/star.jpg" alt />
+        <img src="/assets/star.jpg" alt />
       </div>
       <div class="user-inner border-bottom">
         <div class="inner-head">

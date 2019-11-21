@@ -151,7 +151,7 @@ export default {
 
 <style lang="scss" scoped>
 #topicDetail {
-  background: url(../../../assets/t4.jpg) no-repeat;
+  background: url(/assets/t4.jpg) no-repeat;
   background-size: 100% 100%;
   position: absolute;
   top: 0px;
@@ -160,7 +160,7 @@ export default {
   z-index: 200;
   .content {
     top: 0 !important;
-    background: url(../../../assets/t4.jpg) no-repeat;
+    background: url(/assets/t4.jpg) no-repeat;
     background-size: 100% 100%;
   }
   .topColor {

@@ -2,10 +2,10 @@
   <div class="page modal-page" id="center">
     <app-header :title="title" :hasBack="hasBack" class="topColor"></app-header>
     <div class="top">
-      <img src="../../../assets/centerbg.jpg" alt class="centerbg" />
+      <img src="/assets/centerbg.jpg" alt class="centerbg" />
       <div class="user-icon">
         <p class="user-logo">
-          <img src="../../../assets/star.jpg" alt />
+          <img src="/assets/star.jpg" alt />
         </p>
       </div>
     </div>
@@ -80,7 +80,7 @@ export default {
     z-index: 200;
   }
   .bg {
-    background: url(../../../assets/t4.jpg) no-repeat;
+    background: url(/assets/t4.jpg) no-repeat;
     background-size: 100% 100%;
   }
   background: #fff;

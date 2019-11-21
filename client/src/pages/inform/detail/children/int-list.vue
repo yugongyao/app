@@ -11,7 +11,7 @@
         <h3 class="title">当前评论</h3>
         <div class="contentInt">
           <div class="headImg">
-            <img src="../../../../assets/login.jpg" alt />
+            <img src="/assets/login.jpg" alt />
           </div>
           <div class="center">
             <h3 class="name">余光耀</h3>
@@ -32,7 +32,7 @@
       <div class="to-int" @click="toIntAction" v-if="!isIntDetail">
         <div class="you-headImg">
           <img
-            src="../../../../assets/login.jpg"
+            src="/assets/login.jpg"
             alt
           />
         </div>
@@ -43,7 +43,7 @@
         <h3 class="title">最新评论</h3>
         <div class="contentInt">
           <div class="headImg">
-            <img src="../../../../assets/login.jpg" alt />
+            <img src="/assets/login.jpg" alt />
           </div>
           <div class="center border-bottom">
             <h3 class="name">余光耀</h3>

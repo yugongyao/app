@@ -12,7 +12,7 @@ const homeRouter = require('./routes/homeRouter')
 const server = express();
 
 var store = new MongoDBStore({
-  uri: 'mongodb://localhost:27017/account',
+  uri: 'mongodb://127.0.0.1:27017/account',
   collection: 'session'
 });
 
@@ -22,6 +22,8 @@ store.on('error', function(error) {
 
 // 处理静态资源
 server.use(express.json());
+// 
+
 // 处理post参数
 server.use(express.urlencoded({urlencoded: false, extended:true}));
 
@@ -55,21 +57,27 @@ server.use('/api/recommend_users', (req,res)=>{
   }
 })
 
-// 静态资源
-server.use(express.static(
-  path.join(__dirname, 'public')
-))
-
-
-
 // 响应首页
-server.use('/', (req, res)=>{
-  res.sendFile( path.join(__dirname + '/public/index.html') );
-});
+// server.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/www/index.html');
+// })
+
+// 响应静态资源
+// server.use('/js', express.static('./www/js'));
+// server.use('/css', express.static('./www/css'));
+// server.use('/assets', express.static('./www/assets'));
+// server.use('../img', express.static('./www/img'));
+// server.get('/favicon.ico', (req, res) => {
+//   res.sendFile(__dirname + '/www/favicon.ico');
+// })
+
+// server.use((req, res) => {
+//   res.sendFile(__dirname + '/www/index.html');
+// })
 
 
 // 连接数据库，连接成功再开启服务
-mongoose.connect('mongodb://localhost:27017/account', {useNewUrlParser: true, useUnifiedTopology: true}, (error)=>{
+mongoose.connect('mongodb://127.0.0.1:27017/account', {useNewUrlParser: true, useUnifiedTopology: true}, (error)=>{
   if(error){
     console.log('连接数据库失败：');
     console.log(error);

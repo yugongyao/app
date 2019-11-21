@@ -19,7 +19,7 @@ export default {
   z-index: 999;
 }
 #not-find{
-  background:url(../../../assets/404.jpg) no-repeat;
+  background:url(/assets/404.jpg) no-repeat;
   background-size: 100% 100%;
   .btn{
     width: 56%;

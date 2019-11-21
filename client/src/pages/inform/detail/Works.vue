@@ -5,7 +5,7 @@
         <div class="header border-bottom">
           <div class="headImg">
             <img
-              src="../../../assets/login.jpg"
+              src="/assets/login.jpg"
               alt
             />
           </div>

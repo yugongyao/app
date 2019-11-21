@@ -5,7 +5,7 @@
         <ul>
           <!-- <li class="item">
         <div class="headImg">
-          <img src="../../../assets/login.jpg" alt />
+          <img src="/assets/login.jpg" alt />
         </div>
         <div class="intContent border-bottom">
           <p class="showAll">
@@ -14,7 +14,7 @@
           <p class="intType">评论了我的图片</p>
           <p class="intLetter">多好看的照片</p>
           <div class="essay">
-            <img src="../../../assets/login.jpg" alt />
+            <img src="/assets/login.jpg" alt />
             <span class="yourName text-overflow">@Change的作品</span>
           </div>
           <p class="operator">
@@ -27,7 +27,7 @@
 
           <li class="item">
             <div class="headImg">
-              <img src="../../../assets/login.jpg" alt />
+              <img src="/assets/login.jpg" alt />
             </div>
             <div :class="['intContent','border-bottom']">
               <p @click="showAllAction(1)" class="showAll">
@@ -105,7 +105,7 @@ export default {
 #interact {
   .scroll {
     position: absolute;
-    background: url(../../../assets/t4.jpg) center center;
+    background: url(/assets/t4.jpg) center center;
     background-size: cover;
     top: 0px;
     bottom: 0px;

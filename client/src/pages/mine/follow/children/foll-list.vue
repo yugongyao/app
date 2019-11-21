@@ -2,7 +2,7 @@
   <div class="list">
     <div class="item" v-for="(item,index) in 10" :key="index">
       <div class="item-logo">
-        <img src="../../../../assets/star.jpg" alt />
+        <img src="/assets/star.jpg" alt />
       </div>
       <div class="item-mess">
         <p class="user-name more-overflow">用户名user</p>

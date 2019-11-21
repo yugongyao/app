@@ -3,7 +3,7 @@
     <div class="item" v-for="(item,index) in list" :key="index">
       <div class="item-top">
         <div class="item-logo">
-          <img src="../../../../assets/star.jpg" alt />
+          <img src="/assets/star.jpg" alt />
         </div>
         <div class="tip">
           <span>发布:</span>

@@ -4,7 +4,7 @@
       <ul>
         <li @click="chatAction" class="item border-bottom">
           <div class="headImg">
-            <img src="../../../assets/login.jpg" alt />
+            <img src="/assets/login.jpg" alt />
           </div>
           <div class="letterContent">
             <p class="name">{{username}}</p>
@@ -84,7 +84,7 @@ export default {
     top: 0px;
     bottom: 0px;
     width: 100%;
-    background: url(../../../assets/t4.jpg) no-repeat center center;
+    background: url(/assets/t4.jpg) no-repeat center center;
     background-size: cover;
     ul {
       list-style: none;

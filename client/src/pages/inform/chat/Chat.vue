@@ -143,7 +143,7 @@ export default {
   //   padding: 0 10px;
   //   box-sizing: border-box;
   .chat-panel {
-    background: url(../../../assets/t4.jpg) no-repeat;
+    background: url(/assets/t4.jpg) no-repeat;
     background-size: 100% 100%;
     transition: bottom 0.5s;
     position: absolute;

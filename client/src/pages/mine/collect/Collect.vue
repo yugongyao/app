@@ -100,7 +100,7 @@ export default {
   transform: translateX(10%);
 }
 .bg {
-  background: url(../../../assets/t4.jpg) no-repeat;
+  background: url(/assets/t4.jpg) no-repeat;
   background-size: 100% 100%;
 }
 .footer {

@@ -8,7 +8,7 @@
         <div class="user card fontXing">
           <div class="user-icon">
             <p>
-              <img src="../../../assets/t2.jpg" alt />
+              <img src="/assets/t2.jpg" alt />
             </p>
           </div>
           <div class="user-name">
@@ -103,7 +103,7 @@ export default {
   color: red;
 }
 .page {
-  background: url(../../../assets/t4.jpg) no-repeat;
+  background: url(/assets/t4.jpg) no-repeat;
   background-size: 100% 100%;
   .topColor{
     color: #333;
