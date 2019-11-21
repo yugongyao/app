@@ -1,4 +1,4 @@
-export const HOST = 'http://localhost:8080'
+export const HOST = 'http://10.20.152.18:8080'
 
 
 // 发送验证码   get

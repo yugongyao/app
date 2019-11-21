@@ -46,13 +46,13 @@ const actions = {
     },
     async requestMyMoment(context){
         try {
-            context.commit("setLoading", true);
+            context.commit("setLoading", false);
             var result = await Http.get(api.REQUEST_MOMENTS+'?flag=my');
             if (result.data.status==0) {
                 // 假设是请求成功的数据
                 var data = result.data.data;
                 context.commit('setMyMoment', data);
-                context.commit('setLoading', false);
+                context.commit('setLoading', true);
             }
         } catch (error) {
             throw  new Error(error);

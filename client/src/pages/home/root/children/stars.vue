@@ -8,7 +8,7 @@
                     <span class="nickname">{{item.username}}</span>
                 </div>
                 <div class="sub">
-                    <p><van-icon name="plus" style="vertical-align:middle;"/> 关注</p>
+                    <p><van-icon name="plus" style="vertical-align:small;"/> 关注</p>
                 </div>
             </div>
         </van-swipe-item>
@@ -19,7 +19,7 @@
                     <span class="nickname">{{item.username}}</span>
                 </div>
                 <div class="sub">
-                    <p><van-icon name="close" /> 关注</p>
+                    <p><van-icon name="plus" style="vertical-align:small;" /> 关注</p>
                 </div>
             </div>
         </van-swipe-item>
@@ -30,7 +30,7 @@
                     <span class="nickname">{{item.username}}</span>
                 </div>
                 <div class="sub">
-                    <p><van-icon name="close" /> 关注</p>
+                    <p><van-icon name="plus" style="vertical-align:small;" /> 关注</p>
                 </div>
             </div>
         </van-swipe-item>
@@ -70,10 +70,13 @@ export default {
 
 <style scoped lang="scss">
 #starUsers{
-    width: 90%;
-    margin: 10px 5%;
+    width: 100%;
+    // margin: 10px 5%;
+    padding: 0 10px;
+    box-sizing: border-box;
     min-height: 170px;
-    background-color: rgba(239, 231, 231, 0.7);
+    background-color: snow;
+    border: 1px solid rgba(97, 96, 96, 0.24);
     .van-swipe-item{
         display: flex;
         flex-direction: column;
@@ -92,12 +95,14 @@ export default {
                 display: inline-block;
                 width: 45px;
                 border-radius: 50%;
+                border: 1px solid #eee;
                 margin:0 10px;
             }
             span{
                 position: absolute;
                 &.nickname{
-                    color: #555;
+                    font-size: 15px;
+                    color: #333;
                     left: 70px;
                     top: 15px;
                 }
@@ -110,13 +115,13 @@ export default {
             margin-right: 10px;
             p{
                 text-align: center;
-                width: 80px;
-                height: 38px;
-                border: 1px #dd6611 solid;
-                border-radius: 10px;
-                font-size: 14px;
-                color: #dd6611;
-                line-height: 38px;
+                width: 50px;
+                height: 26px;
+                border: 1px #1989fa solid;
+                border-radius: 3px;
+                font-size: 12px;
+                color: #1989fa;
+                line-height: 30px;
             }
         }
     }

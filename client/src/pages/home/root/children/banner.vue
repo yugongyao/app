@@ -27,7 +27,7 @@ export default {
   background: #fafafa;
   img{
     width: 100%;
-    height: 150px;
+    height: 180px;
   }
 }
 </style>

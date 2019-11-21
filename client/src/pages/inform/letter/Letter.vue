@@ -7,12 +7,12 @@
             <img src="../../../assets/login.jpg" alt />
           </div>
           <div class="letterContent">
-            <p class="name">余光耀</p>
+            <p class="name">{{username}}</p>
             <p class="time">
-              <span class="left">20:03</span>
+              <span class="left">{{time}}</span>
               <span class="right iconfont icon-you"></span>
             </p>
-            <p class="letterText text-overflow" ref="nowWords">y按时大大发光时代奉公守法广东省</p>
+            <p class="letterText text-overflow" ref="nowWords">{{wrap}}</p>
           </div>
         </li>
         <div class="footerEnd">
@@ -25,15 +25,54 @@
 
 <script>
 export default {
+  data(){
+    return{
+      username:"",
+      wrap:"",
+      time:""
+    }
+  },
   methods: {
     chatAction() {
       this.$router.push("/inform/chat/1");
+    },
+    timeAction(t){
+      let now = (new Date()).getTime();
+      let day = (new Date(t)).getDate();
+      let nowDay = (new Date()).getDate();
+      // console.log(nowDay);
+      
+      let timeDiff = now - t;
+      if (timeDiff > 24 * 60 * 60 *1000) {
+        let theDate = new Date(t);
+        return theDate.format("yyyy年MM月dd日 hh:mm");
+      }else if(nowDay-day){
+        let theDate = new Date(t);
+        return "昨天 "+theDate.format("hh:mm");
+      }else{
+        let theDate = new Date(t);
+        return theDate.format("hh:mm");
+      
+    }
     }
   },
   mounted(){
+    let self = this;
     let d = JSON.parse(window.localStorage.getItem("chatData"));
+     console.log(d);
+    this.wrap = d[d.length-1].data||'~~';
     
-    
+    d.map(item=>{
+      
+       if(!item.right){
+
+         if(item.username){
+           self.username = item.username;
+         }
+       }
+     });
+      var time = d[d.length-1].time;
+      this.time = this.timeAction(time);
   }
 };
 </script>

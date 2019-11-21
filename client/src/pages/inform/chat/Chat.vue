@@ -1,6 +1,6 @@
 <template>
   <div id="chat">
-    <app-header :hasBack="true" title="余光耀" class="border-bottom"></app-header>
+    <app-header :hasBack="true" :title="username" class="border-bottom"></app-header>
     <div class="chat-panel" ref="wrap" :style="'bottom:'+(22+textHeight)+'px'">
       <div class="scoll-wrap" ref="content">
         <one-word :wordData="wordData"></one-word>
@@ -32,7 +32,8 @@ export default {
       words: "",
       textareaWidth: 0,
       wrapHeight: 0,
-      wordData:[] 
+      wordData: [],
+      username:""
     };
   },
   computed: {
@@ -52,57 +53,64 @@ export default {
   },
   methods: {
     sendAction() {
-      if(!this.words){
+      if (!this.words) {
         this.$Toast("请输入些内容吧！");
         return;
       }
       var thisWord = {
-          username:store.state.userInfo.username,
-          time: (new Date()).getTime(),
-          data: this.words,
-          img: "/assets/logo.png",
-          right: true,
-        }
-      var dataArr = JSON.parse(window.localStorage.getItem('chatData'));
+        username: this.$store.state.userInfo.username,
+        time: new Date().getTime(),
+        data: this.words,
+        img: "/assets/logo.png",
+        right: true
+      };
+      var dataArr = JSON.parse(window.localStorage.getItem("chatData"));
       dataArr.push(thisWord);
-      window.localStorage.setItem("chatData",JSON.stringify(dataArr));
+      window.localStorage.setItem("chatData", JSON.stringify(dataArr));
       this.wordData.push(thisWord);
 
-      this.ws.send(JSON.stringify({
-        time: (new Date()).getTime(),
+      this.$ws.send(
+        JSON.stringify({
+          username: this.$store.state.userInfo.username,
+          time: new Date().getTime(),
           data: this.words,
           img: "/assets/logo.png",
-          right: false,
-      }));
+          right: false
+        })
+      );
       this.$Toast("发送成功！");
       this.words = "";
       setTimeout(() => {
-          this.setScrollAction();
+        this.setScrollAction();
       }, 0);
     },
-    setScrollAction() { 
+    setScrollAction() {
       this.wrapHeight = parseInt(
         getComputedStyle(this.$refs.content, null).getPropertyValue("height")
       );
       // console.log(this.wrapHeight);
-      
+
       this.$refs.wrap.scrollTop = this.wrapHeight;
     },
-
-    
+    message(data) {
+      this.wordData = data;
+      setTimeout(() => {
+        this.setScrollAction();
+      }, 0);
+    }
+  },
+  created() {
+    this.$center.$on("onemessage", this.message);
   },
 
-  // created(){
-  //   this.setScrollAction();
-
-  // },
   mounted() {
-    if(!window.localStorage.getItem("chatData")){
-      window.localStorage.setItem("chatData","[]");
+    let _this = this;
+    if (!window.localStorage.getItem("chatData")) {
+      window.localStorage.setItem("chatData", "[]");
     }
     setTimeout(() => {
-          this.setScrollAction();
-      }, 0);
+      this.setScrollAction();
+    }, 0);
     this.wordData = JSON.parse(window.localStorage.getItem("chatData"));
     this.textareaWidth =
       parseInt(
@@ -110,8 +118,17 @@ export default {
           .getComputedStyle(this.$refs.textarea, null)
           .getPropertyValue("width")
       ) - 20;
-  },
-
+    let d = JSON.parse(window.localStorage.getItem("chatData"));
+    d.map(item=>{
+       if(!item.right){   
+         if(item.username){
+           console.log(item.username);
+           console.log(_this);
+           _this.username = item.username;
+         }
+       }
+     });
+  }
 };
 </script>
 
@@ -126,8 +143,8 @@ export default {
   //   padding: 0 10px;
   //   box-sizing: border-box;
   .chat-panel {
-  background: url(../../../assets/t4.jpg) no-repeat;
-  background-size: 100% 100%;
+    background: url(../../../assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
     transition: bottom 0.5s;
     position: absolute;
     top: 45px;
@@ -147,10 +164,10 @@ export default {
       .chat-content {
         margin-top: 8px;
         display: flex;
-       &.right{
-            flex-direction: row-reverse;
-       }
-      
+        &.right {
+          flex-direction: row-reverse;
+        }
+
         .headImg {
           height: 40px;
           width: 40px;
@@ -162,7 +179,7 @@ export default {
           margin: 0 10px;
         }
         .data {
-        //   border: 1px solid rgb(0, 132, 255);
+          //   border: 1px solid rgb(0, 132, 255);
           flex: 1;
           max-width: 55%;
           font-size: 14px;
@@ -170,16 +187,16 @@ export default {
           line-height: 17px;
           padding: 4px;
           border-radius: 7px;
-          span{
-              padding: 3px 6px;
-              border-radius: 8px;
-              border:1px solid #ccc;
-              word-break:break-all;
+          span {
+            padding: 3px 6px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            word-break: break-all;
           }
-          span.right{
-              float: right;
-              background: rgb(49, 140, 245);
-              color: #fff;
+          span.right {
+            float: right;
+            background: rgb(49, 140, 245);
+            color: #fff;
             //   border:1px solid rgb(58, 135, 236);
           }
         }

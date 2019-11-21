@@ -46,18 +46,18 @@ export default {
     padding-bottom: 10px;
 }
 .moment-wrap{
-    width: 90%;
-    margin:10px 5%;
+    width: 94%;
+    margin:5px 3%;
     padding: 10px 0;
-    background-color: rgba(239, 231, 231, 0.7);
-    border-radius: 10px;
+    background-color: rgba(233, 231, 239, 0.945);
+    border-radius: 2px;
     .user{
         height: 50px;
         position: relative;
         overflow: hidden;
         img{
             display: inline-block;
-            width: 45px;
+            width: 40px;
             border-radius: 50%;
             margin:0 15px;
         }
@@ -71,25 +71,28 @@ export default {
         span.time{
             left: 70px;
             bottom: 5px;
-            font-size: 14px;
+            font-size: 13px;
+            color: #666;
         }
     }
     p{
         margin-top: 8px;
         text-indent: 2em;
-        font-size: 16px;
+        font-size: 14px;
+        color: #444;
     }
     ul.pics{
         overflow: hidden;
-        width: 90%;
-        padding: 0 5%;
+        width: 96%;
+        padding: 0 2%;
+        margin:10px 0;
         li{
             float: left;
             width: 50%;
-            margin: 10px 0; 
+            margin: 4px 0; 
             img{
                 margin: 0 auto;
-                width: 80%;
+                width: 90%;
             }
         }
     }
@@ -98,9 +101,9 @@ export default {
         text-align: center;
         span{
             display: inline-block;
-            border: 1px solid #666;
+            // border: 1px solid #666;
             text-align: center;
-            border-radius: 10px;
+            border-radius: 3px;
             width: 100px;
             height: 24px;
             margin: 0 15px;

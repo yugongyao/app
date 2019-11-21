@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLogin: false,
+    isLogin: true,
     userInfo: {},
     starUsers: []
   },
@@ -49,7 +49,7 @@ export default new Vuex.Store({
       } catch (error) {
           throw  new Error(error);
       }
-    }
+    },
 
   },
   modules: {

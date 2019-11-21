@@ -93,6 +93,7 @@
 
 <script>
 import store from "../../../store";
+import Http from '../../../utils/Http'
 export default {
   data() {
     return {
@@ -110,8 +111,14 @@ export default {
     goCenter() {
       this.$router.push(`/mine/center`);
     },
-    goOut(){
+    async goOut(){
       store.commit('setLogin',false);
+       let result = await Http.get("api/user/logout");
+        if(result.data.status === 0){
+          this.$Toast('退出成功！')
+        } else {
+          this.$Toast('退出失败')
+        }
       this.$router.push("/login")
     }
   }
