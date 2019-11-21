@@ -119,6 +119,15 @@ export default {
     handleRefresh() {
       this.$store.dispatch("moments/refreshMoments");
       this.$store.dispatch("moments/requestMyMoment");
+    },
+    setHeight(){
+      function setHomeScrollHeight() {
+      let height = window.innerHeight;
+      document.querySelector('#home .van-tabs__content').style.height = height - 44 + 'px';
+      document.querySelector('#home .homeContent').style.height = height - 94 + 'px';
+    }
+    window.onload = setHomeScrollHeight;
+    window.onresize = setHomeScrollHeight;
     }
   },
   watch: {
@@ -128,7 +137,9 @@ export default {
       this.$Toast.clear();
     }
   },
-
+  updated(){
+   this.setHeight();
+  },
   created() {
     this.$Toast.loading({
       message: "页面加载中...",
@@ -141,13 +152,7 @@ export default {
     this.$store.dispatch("moments/requestMyMoment");
   },
   mounted(){
-      function setHomeScrollHeight() {
-      let height = window.innerHeight;
-      document.querySelector('#home .van-tabs__content').style.height = height - 44 + 'px';
-      document.querySelector('#home .homeContent').style.height = height - 94 + 'px';
-    }
-    window.onload = setHomeScrollHeight;
-    window.onresize = setHomeScrollHeight;
+      this.setHeight();
   }
 };
 </script>
