@@ -1,7 +1,7 @@
 <template>
   <div class="page modal-page" id="help">
     <app-header :title="title" :hasBack="hasBack" class="topColor border-bottom"></app-header>
-    <app-scroll class="content">
+    <app-scroll class="content bg">
       <div class="help-inner">
         <van-collapse v-model="activeName" accordion>
           <van-collapse-item
@@ -67,6 +67,10 @@ export default {
     color: #333;
     background: #fafafa;
     box-shadow: 2px 2px 5px #999;
+  }
+  .bg {
+    background: url(../../../assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
   }
 }
 </style>

@@ -40,9 +40,9 @@
               <p class="intType" v-if="like">喜欢了我的作品:</p>
               <p class="intType" v-if="atte">关注了我:</p>
               <div @click="goWorkDtailAction" :class="['essay',{isAtte:atte}]">
-                <img v-if="interact||like" src="../../../assets/login.jpg" alt />
+                <img v-if="interact||like" src="/assets/top.jpg" alt />
                 <span class="yourName text-overflow">
-                  @Change
+                  {{$store.state.userInfo.username}}
                   <span v-if="interact||like">的作品</span>
                 </span>
               </div>

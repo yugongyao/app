@@ -13,12 +13,13 @@
               <i>生活</i>
             </span>
           </p>
-          <div class="collect"><i>收藏主题:</i>
+          <div class="collect">
+            <i>收藏主题:</i>
             <span class="iconfont icon-shoucang" ref="coll" @click="topCollect"></span>
           </div>
         </div>
       </div>
-      <div class="topic-inner">
+      <div class="topic-inner fontXing">
         <p v-for="(item,index) in article" :key="index">{{item}}</p>
       </div>
       <commentList />
@@ -27,26 +28,26 @@
 </template>
 
 <script>
-import store from '../../../store'
+import store from "../../../store";
 import commentList from "./children/comment-list";
 export default {
   components: {
     commentList
   },
-   beforeRouteEnter(to, from, next) {
-    if(store.state.isLogin){
+  beforeRouteEnter(to, from, next) {
+    if (store.state.isLogin) {
       next();
-    } else{
-      next('/login');
+    } else {
+      next("/login");
     }
   },
   data() {
     return {
-      id:1,
+      id: 1,
       title: "话题",
       hasBack: true,
-      topTitle:'打动过你的经典老歌',
-      imgPic:'/assets/top.jpg',
+      topTitle: "打动过你的经典老歌",
+      imgPic: "/assets/top.jpg",
       article: [
         "秋兰兮麋芜",
         "罗生兮堂下",
@@ -57,46 +58,91 @@ export default {
         "秋兰兮青青",
         "绿叶兮紫茎"
       ],
-      isCollect:false
+      isCollect: false
     };
   },
-  mounted(){
-    var id=this.$route.params.topicid;
-    this.id=id;
-    // console.log(this.id);
-    
+  mounted() {
+    var id = this.$route.params.topicid;
+    this.id = Number(id);
     var list = storage.get("soso");
     if (list) {
-      list=list[id-1];
-      // 图片
-      this.imgPic=list.img;
-      // 话题名
-      this.topTitle=list.pro;
-      //文章
-      var desc = list.desc;
-      var str = desc.split(",");
-      this.article = str;
+      list.forEach((item, index) => {
+        if (item.id == this.id) {
+          // 图片
+          this.imgPic = item.img;
+          // 话题名
+          this.topTitle = item.pro;
+          //文章
+          var desc = item.desc;
+          var str = desc.split(",");
+          this.article = str;
+        }
+      });
+    }
+    var coll1 = storage.get("collect");
+    var arr = [];
+    coll1.forEach((itemC, indexC) => {
+      arr.push(itemC.id);
+    });
+    var hasC = arr.indexOf(this.id) + 1;
+    if (hasC) {
+      this.isCollect = true;
+    }
+    var coll = this.$refs.coll;
+    // console.log(coll);
+
+    if (this.isCollect) {
+      coll.style.color = "red";
+    } else {
+      coll.style.color = "#fff";
     }
   },
-  methods:{
-    topCollect(){
-      var coll=this.$refs.coll
+  methods: {
+    topCollect() {
+      var coll = this.$refs.coll;
       if (!this.isCollect) {
-        coll.style.color='red';
-        var topic=storage.get('soso');
-        topic=topic[this.id-1];
-        console.log(topic);
-        if (!storage.get('collect')) {
-          storage.set('collect',[]);
-        }
-        var collects=storage.get('collect');
-        collects.push(topic)
-        storage.set('collect',collects)
+        coll.style.color = "red";
+        var topic = storage.get("soso");
+        topic.forEach((itemT, indexT) => {
+          if (itemT.id == this.id) {
+            if (!storage.get("collect")) {
+              storage.set("collect", []);
+              var collect1 = storage.get("collect");
+              collect1.push(itemT);
+              storage.set("collect", collect1);
+            } else {
+              //当collect有值时
+              var coll1 = storage.get("collect");
+              var arr = [];
+              coll1.forEach((itemC, indexC) => {
+                arr.push(itemC.id);
+              });
+              var hasC = arr.indexOf(this.id) + 1;
+              if (!hasC) {
+                var collect2 = storage.get("collect");
+                collect2.push(itemT);
+                storage.set("collect", collect2);
+              }
+            }
+          }
+        });
+        this.isCollect = true;
+      } else {
+        coll.style.color = "#fff";
+        var coll1 = storage.get("collect");
+        var arr = [];
+        coll1.forEach((itemC, indexC) => {
+          arr.push(itemC.id);
+        });
+        var hasC = arr.indexOf(this.id) + 1;
+        console.log(hasC);
         
-        this.isCollect=true;
-      }else{
-        coll.style.color='#fff';
-        this.isCollect=false;
+        if (hasC) {
+          var collect2 = storage.get("collect");
+          collect2.splice(hasC-1,1);
+          storage.set("collect", collect2);
+        }
+        this.isCollect = false;
       }
     }
   }
@@ -160,7 +206,7 @@ export default {
           }
         }
       }
-      .collect{
+      .collect {
         position: absolute;
         left: 15px;
         bottom: 6%;
@@ -169,7 +215,7 @@ export default {
         font-size: 14px;
         height: 30px;
         line-height: 30px;
-        span{
+        span {
           color: #fff;
           font-size: 16px;
           padding: 5px;
@@ -186,7 +232,7 @@ export default {
     margin-bottom: 10px;
     p {
       line-height: 30px;
-      color: #727272;
+      color: #333;
     }
   }
 }

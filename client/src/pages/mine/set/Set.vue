@@ -1,14 +1,14 @@
 <template>
   <div class="page modal-page" id="set">
     <app-header :title="title" :hasBack="hasBack" class="topColor border-bottom"></app-header>
-    <app-scroll class="content">
+    <app-scroll class="content bg">
       <div class="set-main">
         <div class="toCenter border-bottom" @click="goCenter">
           <div class="user-logo">
             <img src="../../../assets/star.jpg" alt />
           </div>
           <div class="user-name">
-            <p>用户名</p>
+            <p>{{$store.state.userInfo.username}}</p>
             <p>用户简介</p>
           </div>
           <div class="arrow">
@@ -21,7 +21,7 @@
             <span class="iconfont icon-you"></span>
           </div>
         </div>
-        <div class="otherApp set-common">
+        <!-- <div class="otherApp set-common">
           <div class="weChat border-bottom iconAll">
             <p>
               <span class="iconfont icon-weixin"></span>微信
@@ -54,7 +54,7 @@
               <span class="iconfont icon-you"></span>
             </p>
           </div>
-        </div>
+        </div> -->
         <div class="set-inform set-common">
           <div class="privacy border-bottom iconAll">
             <p>隐私</p>
@@ -133,10 +133,15 @@ export default {
   }
 }
 #set {
+  font-size: 14px;
   .topColor {
     color: #333;
     background: #fafafa;
     box-shadow: 2px 2px 5px #999;
+  }
+  .bg {
+    background: url(../../../assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
   }
   .toLogin {
     margin-top: 20px;
@@ -216,10 +221,14 @@ export default {
           flex: 1;
           span{
             padding-right: 10px;
+            font-size: 12px;
           }
         }
       }
     }
+  }
+  .icon-you{
+    font-size: 12px;
   }
 }
 </style>

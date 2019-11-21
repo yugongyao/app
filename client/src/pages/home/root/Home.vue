@@ -139,6 +139,15 @@ export default {
     this.$store.dispatch("moments/requestMomentsList");
     this.$store.dispatch("moments/requestHotIssues");
     this.$store.dispatch("moments/requestMyMoment");
+  },
+  mounted(){
+      function setHomeScrollHeight() {
+      let height = window.innerHeight;
+      document.querySelector('#home .van-tabs__content').style.height = height - 44 + 'px';
+      document.querySelector('#home .homeContent').style.height = height - 94 + 'px';
+    }
+    window.onload = setHomeScrollHeight;
+    window.onresize = setHomeScrollHeight;
   }
 };
 </script>
@@ -150,6 +159,9 @@ export default {
 .homeContent {
   width: 100%;
   height: 574px;
+  background: url("../../../assets/t4.jpg") no-repeat;
+}
+#home{
   background: url("../../../assets/t4.jpg") no-repeat;
 }
 .van-loading__spinner {
