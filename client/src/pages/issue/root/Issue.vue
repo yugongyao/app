@@ -130,7 +130,6 @@ export default {
             // console.log(localData);
             storage.set("soso", localData);
             self.$router.push('/topic/today');
-            console.log(111);
             
             // this.$router.push("/home");
             self.$Toast.clear();
