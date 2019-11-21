@@ -1,7 +1,7 @@
 <template>
   <div class="page modal-page" id="feedback">
     <app-header :title="title" :hasBack="hasBack" class="topColor border-bottom"></app-header>
-    <app-scroll class="content">
+    <app-scroll class="content bg">
       <div class="main-inner">
         <div class="feed-img">
           <img src="../../../assets/feedback.jpg" alt />
@@ -94,6 +94,10 @@ export default {
     color: #333;
     background: #fafafa;
     box-shadow: 2px 2px 5px #999;
+  }
+  .bg {
+    background: url(../../../assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
   }
   .end{
     height: 40px;

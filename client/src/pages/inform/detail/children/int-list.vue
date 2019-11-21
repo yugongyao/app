@@ -32,7 +32,7 @@
       <div class="to-int" @click="toIntAction" v-if="!isIntDetail">
         <div class="you-headImg">
           <img
-            src="https://imgsa.baidu.com/forum/pic/item/269759ee3d6d55fb4fa2695f62224f4a20a4dd67.jpg"
+            src="../../../../assets/login.jpg"
             alt
           />
         </div>

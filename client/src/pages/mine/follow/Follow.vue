@@ -2,7 +2,7 @@
   <div class="page modal-page" id="follow">
     <app-header :title="title" :hasBack="hasBack" class="topColor border-bottom">
     </app-header>
-    <app-scroll class="content">
+    <app-scroll class="content bg">
       <follList/>
     </app-scroll>
   </div>
@@ -37,6 +37,10 @@ export default {
     color: #333;
     background: #fafafa;
     box-shadow: 2px 2px 5px #999;
+  }
+  .bg {
+    background: url(../../../assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
   }
 }
 </style>

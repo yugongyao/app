@@ -5,23 +5,34 @@
       <img src="../../../assets/centerbg.jpg" alt class="centerbg" />
       <div class="user-icon">
         <p class="user-logo">
-          <img src="../../../assets/star.jpg" alt="">
+          <img src="../../../assets/star.jpg" alt />
         </p>
       </div>
     </div>
     <div class="user-main">
       <h2 class="user-name fontXing">{{userInfo.username}}</h2>
-      <div class="user-edit fontXing"><router-link to="/mine/center/edit">编辑资料</router-link></div>
+      <div class="user-edit fontXing">
+        <router-link to="/mine/center/edit">编辑资料</router-link>
+      </div>
     </div>
     <div class="user-tab">
       <div class="tab-inner">
-        <div class="tabs prod"><span>1</span><span>作品</span></div>
-        <div class="tabs atten"><span>2</span><span>关注</span></div>
-        <div class="tabs fans"><span>3</span><span>粉丝</span></div>
+        <div class="tabs prod">
+          <span>{{prodNum}}</span>
+          <span>作品</span>
+        </div>
+        <div class="tabs atten">
+          <span>0</span>
+          <span>关注</span>
+        </div>
+        <div class="tabs fans">
+          <span>0</span>
+          <span>粉丝</span>
+        </div>
       </div>
     </div>
-    <app-scroll class="content">
-      <issueList/>
+    <app-scroll class="content bg">
+      <issueList />
     </app-scroll>
     <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
       <router-view></router-view>
@@ -30,38 +41,47 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
-import store from '../../../store'
-import issueList from './children/issue-list'
+import { mapState } from "vuex";
+import store from "../../../store";
+import issueList from "./children/issue-list";
 
 export default {
-  components:{
+  components: {
     issueList
   },
   data() {
     return {
       title: "个人中心",
-      hasBack: true
+      hasBack: true,
+      prodNum:0
     };
   },
-  methods:{
-
-  },
+  methods: {},
   computed: {
     ...mapState({
-      userInfo: state=>state.userInfo
+      userInfo: state => state.userInfo
     })
   },
-}
+  mounted(){
+    if (!storage.get('soso')) {
+      this.prodNum=0;
+    }
+    this.prodNum=storage.get('soso').length;
+  }
+};
 </script>
 
 <style scoped lang="scss">
 #center {
-  .topColor{
+  .topColor {
     color: #ddd;
   }
   .app-header {
     z-index: 200;
+  }
+  .bg {
+    background: url(../../../assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
   }
   background: #fff;
   .title {
@@ -85,38 +105,38 @@ export default {
       width: 100%;
       height: 150px;
     }
-    .user-icon{
+    .user-icon {
       position: absolute;
       height: 60px;
       width: 100%;
       left: 0;
       bottom: -15px;
       z-index: 200;
-      .user-logo{
+      .user-logo {
         width: 60px;
         height: 60px;
         border: solid 2px #fff;
         border-radius: 50%;
         margin-left: 10px;
-        img{
-          width:100%;
+        img {
+          width: 100%;
           height: 100%;
           border-radius: 50%;
         }
       }
     }
   }
-  .user-main{
+  .user-main {
     height: 50px;
     width: 100%;
     background: #fff;
     position: relative;
-    .user-name{
+    .user-name {
       line-height: 50px;
       text-align: center;
       font-size: 20px;
     }
-    .user-edit{
+    .user-edit {
       width: 60px;
       height: 20px;
       line-height: 20px;
@@ -130,29 +150,29 @@ export default {
       cursor: pointer;
     }
   }
-  .user-tab{
+  .user-tab {
     height: 50px;
     width: 100%;
     position: relative;
     box-shadow: 2px 2px 5px #999;
-    .tab-inner{
+    .tab-inner {
       width: 100%;
       height: 100%;
       background: #eee;
-      border-radius:5px;
+      border-radius: 5px;
       display: flex;
       padding: 5px 0;
       box-sizing: border-box;
-      .tabs{
+      .tabs {
         flex: 1;
         display: flex;
         flex-direction: column;
         text-align: center;
-        span:nth-of-type(1){
+        span:nth-of-type(1) {
           flex: 1;
           font-size: 20px;
         }
-        span:nth-of-type(2){
+        span:nth-of-type(2) {
           margin-top: 4px;
           flex: 1;
           font-size: 12px;
@@ -162,7 +182,7 @@ export default {
     }
   }
   .content {
-    top:250px;
+    top: 250px;
   }
 }
 </style>

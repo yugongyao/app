@@ -46,9 +46,9 @@ export default {
     var list = storage.get("soso");
     if (list) {
       var listLength = list.length;
-      this.id=listLength;
-      
       var list = list[listLength - 1];
+      // 取id
+      this.id=list.id;
       // 标题
       this.title = list.pro;
       // 图片
