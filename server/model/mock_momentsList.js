@@ -5,7 +5,7 @@ var data = Mock.mock({
     status: 0,
     'data|10': [
         {
-            'username': '@word',
+            'username': '@cname',
             'icon': '../public/images/icon-default.png',
             'id|+1': 1,
             'text': '@sentence',

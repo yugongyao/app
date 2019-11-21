@@ -66,7 +66,7 @@ export default {
     if (!storage.get('soso')) {
       this.prodNum=0;
     }
-    this.prodNum=storage.get('soso').length;
+    this.prodNum=storage.get('soso')&&storage.get('soso').length;
   }
 };
 </script>

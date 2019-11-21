@@ -11,11 +11,11 @@ var refresh = function(){
         'status': 0,
         "data|5": [
             {
-                'username': '@word',
+                'username': '@cname',
                 'icon': '/assets/icon-default.png',
                 'id|+1': 1,
                 'text': '@csentence',
-                'picArr|1-4': ["@image(50x50,"+randomHexColorCode()+",^_^)"],
+                'picArr|1-4': ["@image(50x50,"+randomHexColorCode()+",)"],
                 'time': '@datetime("MM-dd HH:mm")',
                 'comments|1-10': 5,
                 'likes|1-50': 5
