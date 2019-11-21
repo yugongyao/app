@@ -162,8 +162,8 @@ export default {
     this.timeFormat(new Date());
     this.username = this.userInfo.username;
     this.sex = this.userInfo.sexID;
-    this.timeValue = this.userInfo.birthday;
-    this.message = this.userInfo.desc;
+    this.timeValue = this.userInfo.birthday || '';
+    this.message = this.userInfo.desc || '';
   }
 };
 </script>
