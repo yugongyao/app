@@ -76,7 +76,7 @@ mongoose.connect('mongodb://localhost:27017/account', {useNewUrlParser: true, us
   }else{
     console.log('连接数据成功');
     // 启动成功
-    server.listen('3000', (error)=>{
+    server.listen(3000,(error)=>{
       if(!error){
         console.log('服务器启动成功');
       }else{
