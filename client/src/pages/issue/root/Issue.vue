@@ -105,7 +105,6 @@ export default {
           .post("http://localhost:4000/upload/img", formData, config)
           .then(function(response) {
             var data = {
-
               username:store.state.userInfo.username,
               img: response.data,
               desc: self.$refs.desc.value,
@@ -123,8 +122,12 @@ export default {
             localData.push(data);
             // console.log(localData);
             storage.set("soso", localData);
-            this.$Toast.clear();
-            this.$router.push("/home");
+            self.$router.push('/topic/today');
+            console.log(111);
+            
+            // this.$router.push("/home");
+            self.$Toast.clear();
+            
           })
           .catch(function(error) {
             // alert("上传失败！");
@@ -132,6 +135,7 @@ export default {
           });
         // console.log(formData.get("img"));
       }
+     
     },
     geoAction() {
       this.$Toast.loading({

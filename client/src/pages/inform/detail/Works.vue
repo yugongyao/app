@@ -7,7 +7,7 @@
             <img src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portraith/item/tb.1.96ccdaa.fqaF4falPQP-O9L_bOl3eQ?t=1436072912" alt="">
           </div>
           <div class="name-time">
-            <p class="name">change</p>
+            <p class="name">{{}}</p>
             <span>14:33</span>
           </div>
           <span class="follow">+关注</span>

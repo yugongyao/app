@@ -1,13 +1,13 @@
 <template>
   <div class="list">
-    <div class="item" v-for="item in 6" :key="item">
-      <div class="choice"><span class="iconfont icon-weibiaoti38" ref="choice" @click="hasChoice(item)"></span></div>
+    <div class="item" v-for="item in list" :key="item">
+      <div class="choice"><span class="iconfont icon-yuangou" ref="choice" @click="hasChoice(item)"></span></div>
       <div class="item-img">
-        <img src="../../../../assets/moban.jpg" alt />
+        <img :src="item.img" alt />
       </div>
       <div class="item-inner">
-        <p class="item-title more-overflow">文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容</p>
-        <p class="item-tag">#标签</p>
+        <p class="item-title more-overflow">{{item.desc}}</p>
+        <p class="item-tag">#{{item.pro}}</p>
       </div>
     </div>
     <div class="end"><p class="fontXing">-The End-</p></div>
@@ -18,7 +18,13 @@
 export default {
   data(){
     return{
-      isChoice:true
+      isChoice:true,
+      list:[]
+    }
+  },
+  mounted(){
+    if (storage.get('collect')) {
+      this.list=storage.get('collect');
     }
   },
   methods:{
@@ -64,6 +70,7 @@ export default {
       line-height: 120px;
       span{
         padding: 4px;
+        font-size: 20px;
       }
     }
     .item-img {

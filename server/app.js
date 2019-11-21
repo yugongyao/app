@@ -17,7 +17,33 @@ app.all('*', function (req, res, next) {
 });
 
 app.use("/upload/img", formData())
+const WebSocket = require('ws');
 
+
+// 构建websocket通信服务器
+const ws = new WebSocket.Server({
+    port: 9001
+});
+
+const arr = [];
+
+// 监听客户端的连接
+ws.on('connection', (socket) => {
+    console.log('有人上线了');
+    arr.push(socket);
+
+    socket.on('message', (data) => {
+        //客户端发送的信息
+        console.log(data);
+
+        // 告诉其他的客户端该客户端发了什么信息
+        arr.forEach(item => {
+            item !== socket && item.send(data);
+        })
+
+    })
+
+})
 app.listen(4000, function () {
     console.log("start:http://localhost:4000/upload/img")
 })

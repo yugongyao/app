@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>app</title>
-    <link rel="stylesheet" href="<%= BASE_URL %>css/reset.css">
-    <link rel="stylesheet" href="<%= BASE_URL %>css/border.css">
-    <link rel="stylesheet" href="<%= BASE_URL %>font/iconfont.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=DXpdsGMqz9XzZQaRHUv8nQoC7sUyuAg4">
-    </script>
-    <script src="<%= BASE_URL %>js/fastclick.js"></script>
-    <script>
-      if ('addEventListener' in document) {
-        document.addEventListener('DOMContentLoaded', function() {
-            FastClick.attach(document.body);
-        }, false);
-      }
-      
-      
 
-    </script>
-    <script src="/js/storage.js"></script>
-    <!-- built files will be auto injected -->
-    
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>app</title>
+  <link rel="stylesheet" href="<%= BASE_URL %>css/reset.css">
+  <link rel="stylesheet" href="<%= BASE_URL %>css/border.css">
+  <link rel="stylesheet" href="<%= BASE_URL %>font/iconfont.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=DXpdsGMqz9XzZQaRHUv8nQoC7sUyuAg4">
+  </script>
+  <script src="<%= BASE_URL %>js/fastclick.js"></script>
+  <script>
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function () {
+        FastClick.attach(document.body);
+      }, false);
+    }
+
+    function setHomeScrollHeight() {
+      let height = window.innerHeight;
+      document.querySelector('#home .van-tabs__content').style.height = height - 44 + 'px';
+      document.querySelector('#home .homeContent').style.height = height - 94 + 'px';
+    }
+    window.onload = setHomeScrollHeight;
+    window.onresize = setHomeScrollHeight;
+  </script>
+  <script src="/js/storage.js"></script>
+  <!-- built files will be auto injected -->
+
+</body>
+
 </html>
