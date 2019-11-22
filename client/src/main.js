@@ -32,7 +32,7 @@ Date.prototype.format = function (format) {
   return format;
 }
 Vue.prototype.$center = new Vue();
-Vue.prototype.$ws = new WebSocket('ws://10.20.152.18:9001');
+Vue.prototype.$ws = new WebSocket('ws://www.hellochange.cn:9000');
 let vm = new Vue({
   router,
   store,

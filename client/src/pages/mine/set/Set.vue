@@ -112,7 +112,7 @@ export default {
       this.$router.push(`/mine/center`);
     },
     async goOut(){
-      store.commit('setLogin',false);
+      this.$store.commit('setLogin',false);
        let result = await Http.get("api/user/logout");
         if(result.data.status === 0){
           this.$Toast('退出成功！')

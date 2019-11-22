@@ -30,4 +30,4 @@ export default {
     bottom: 28%;
   }
 }
-</style>>
+</style>

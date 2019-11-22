@@ -72,7 +72,15 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
+import api from '../../../../utils/api';
+import Http from '../../../../utils/Http';
 export default {
+   computed:{
+    ...mapState({
+      userInfo: state=>state.userInfo
+    })
+  },
   data() {
     return {
       title: "编辑个人资料",
@@ -96,10 +104,24 @@ export default {
     };
   },
   methods: {
-    save() {
+    async save() {
       console.log("保存成功");
       var arr=[this.username,this.sex,this.timeValue,this.message]
-      console.log(arr);
+      // console.log(arr);
+      let result = await Http.post(api.EDIT_INFO,{
+        _id: this.userInfo._id,
+        username: this.username,
+        sexID: this.sex,
+        birthday: this.timeValue,
+        desc: this.message
+      });
+      if (result.data.status === 0){
+        this.$store.dispatch('requestUserInfo');
+        this.$Toast('更新成功');
+      } else {
+        this.$Toast('更新失败');
+        console.log(result.data.msg);
+      }
     },
     onSexConfirm(value) {
       this.sex = value;
@@ -131,8 +153,17 @@ export default {
       return year + "年" + month + "月" + day + "日";
     }
   },
+  beforeRouteEnter: (to, from, next)=>{
+    next((component)=>{
+      component.$store.dispatch('requestUserInfo');
+    });
+  },
   mounted() {
     this.timeFormat(new Date());
+    this.username = this.userInfo.username;
+    this.sex = this.userInfo.sexID;
+    this.timeValue = this.userInfo.birthday || '';
+    this.message = this.userInfo.desc || '';
   }
 };
 </script>

@@ -18,6 +18,9 @@ export default new Vuex.Store({
     },
     setStarUsers(state, payload){
       state.starUsers = payload;
+    },
+    setUserInfo(state,userinfo){
+      state.userInfo = userinfo
     }
   },
   actions: {
@@ -38,9 +41,11 @@ export default new Vuex.Store({
     async requestUserInfo(context){
       try {
         var result = await Http.get(api.REQUEST_USERINFO);
-        console.log(result);
+        // console.log("获得用户",result);
         if (result.data.status==0) {
             var data = result.data.data;
+            // console.log(data);
+            
             context.commit('setUserInfo', data);
         }
       } catch (error) {

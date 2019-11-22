@@ -6,7 +6,7 @@
       <input class="form-contrl" type="text" placeholder="请输入用户名" v-model="user" />
     </div>
     <div class="form-group">
-      <input class="form-contrl" type="email" placeholder="请输入邮箱号" v-model="tel"/>
+      <input class="form-contrl" type="text" placeholder="请输入手机号" v-model="tel"/>
     </div>
     <div class="form-group">
       <input class="form-contrl" type="password" placeholder="请输入密码" v-model="psd"/>
@@ -70,7 +70,8 @@ export default {
     },
 
     async sendCode(){
-      let reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+      // if(!(/^1[3456789]\d{9}$/.test(phone))){
+      let reg = /^1[3456789]\d{9}$/;
       let email = this.tel;
       if(!email){
         this.$Toast('输入不能为空！')

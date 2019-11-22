@@ -10,7 +10,7 @@
         titleActiveColor="#fff"
         titleInactiveColor="#feeeee"
         id="home-tab"
-        @click="onClick"
+        @change="onClick"
       >
         <van-tab title="精选">
           <!-- <router-link to="/home/bannerDetail/1">前往轮播详情</router-link>

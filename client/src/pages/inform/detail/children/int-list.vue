@@ -100,7 +100,7 @@ export default {
       this.$router.push("/inform/detail/1");
     },
     toIntAction(option = "int") {
-      console.log(option);
+      // console.log(option);
 
       if (option == "reply") {
         this.title = "回复";

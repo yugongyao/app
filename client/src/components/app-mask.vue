@@ -30,7 +30,7 @@ export default {
 
     },
     submitAction() {
-      console.log(this.$refs.textarea.value);
+      // console.log(this.$refs.textarea.value);
       this.$Toast("提交成功！");
       this.closeMaskAction();
     }

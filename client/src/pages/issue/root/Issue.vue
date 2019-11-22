@@ -87,7 +87,7 @@ export default {
         });
 
         const v = document.querySelector(".van-uploader__input").value;
-        console.log(v);
+        // console.log(v);
 
         formData.append("desc", this.$refs.desc.value);
         formData.append("address", this.address);
@@ -102,7 +102,7 @@ export default {
           headers: { "Content-Type": "multipart/form-data" }
         };
         axios
-          .post("http://localhost:4000/upload/img", formData, config)
+          .post("http://hellochange.cn:4000/upload/img", formData, config)
           .then(function(response) {
             var id;
             if (!storage.get("soso")) {

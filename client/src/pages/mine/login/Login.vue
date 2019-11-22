@@ -3,7 +3,7 @@
   <div class="btn" @click="goBack()"><span class="iconfont icon-chahao"></span></div>
   <div class="content">
     <div class="form-group">
-      <input class="form-contrl" type="email" placeholder="请输入邮箱号" v-model="tel"/>
+      <input class="form-contrl" type="text" placeholder="请输入手机号" v-model="tel"/>
     </div>
     <div class="form-group">
       <input class="form-contrl" type="password" placeholder="请输入密码" v-model="psd"/>
@@ -46,6 +46,7 @@ export default {
       if (result.data.status === 0){
         // 设置登录状态为true
         this.$store.commit('setLogin', true);
+        this.$store.dispatch('requestUserInfo');
         setTimeout(() => {
           this.$router.push('/home');
         }, 500);

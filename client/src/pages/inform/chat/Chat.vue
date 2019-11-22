@@ -122,8 +122,8 @@ export default {
     d.map(item=>{
        if(!item.right){   
          if(item.username){
-           console.log(item.username);
-           console.log(_this);
+          //  console.log(item.username);
+          //  console.log(_this);
            _this.username = item.username;
          }
        }
