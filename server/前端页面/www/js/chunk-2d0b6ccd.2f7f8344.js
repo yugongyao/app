@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b6ccd"],{"1f68":function(e,n,t){"use strict";t.r(n);var a=function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},c=[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"page",attrs:{id:"bannerDetail"}},[t("h1",[e._v("轮播图详情bannerDetail")])])}],r={},l=r,s=t("4e82"),i=Object(s["a"])(l,a,c,!1,null,null,null);n["default"]=i.exports}}]);
+//# sourceMappingURL=chunk-2d0b6ccd.2f7f8344.js.map

@@ -1,15 +1,46 @@
 <template>
-<div class="page" id="follow">
-  <h1>关注中心</h1>
-</div>
+  <div class="page modal-page" id="follow">
+    <app-header :title="title" :hasBack="hasBack" class="topColor border-bottom">
+    </app-header>
+    <app-scroll class="content bg">
+      <follList/>
+    </app-scroll>
+  </div>
 </template>
 
 <script>
-export default {
+import follList from "./children/foll-list"
 
-}
+export default {
+  components: {
+    follList
+  },
+  data() {
+    return {
+      title: "我的关注",
+      hasBack: true,
+      isShow:true
+    };
+  },
+};
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.page-wrap {
+  z-index: 999;
+  .page {
+    background: #fff !important;
+  }
+}
+#follow {
+  .topColor {
+    color: #333;
+    background: #fafafa;
+    box-shadow: 2px 2px 5px #999;
+  }
+  .bg {
+    background: url(/assets/t4.jpg) no-repeat;
+    background-size: 100% 100%;
+  }
+}
 </style>

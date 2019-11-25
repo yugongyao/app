@@ -17,15 +17,11 @@ const routes = [
   issueRoutes,//发布
   informRoutes,//通知
   mineRoutes,//我的
+  
   {
     // 用户详情
     path: '/userDetail',
     component: ()=>import('../pages/home/userDetail/UserDetail')
-  },
-  {
-    // 动态详情
-    path: '/dynamic',
-    component: ()=>import('../pages/home/dynamic/Dynamic')
   },
   {
     // 登录

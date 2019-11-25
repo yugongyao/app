@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>app</title>
-    <link rel="stylesheet" href="<%= BASE_URL %>css/reset.css">
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but my-app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    
-    <script src="<%= BASE_URL %>js/fastclick.js"></script>
-    <script>
-      if ('addEventListener' in document) {
-        document.addEventListener('DOMContentLoaded', function() {
-            FastClick.attach(document.body);
-        }, false);
-      }
-    </script>
 
-    <!-- built files will be auto injected -->
-    
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>app</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/border.css">
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=DXpdsGMqz9XzZQaRHUv8nQoC7sUyuAg4">
+  </script>
+  <script src="/js/fastclick.js"></script>
+  <script>
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function () {
+        FastClick.attach(document.body);
+      }, false);
+    }
+
+  
+  </script>
+  <script src="/js/storage.js"></script>
+  <!-- built files will be auto injected -->
+
+</body>
+
 </html>
