@@ -1,8 +1,8 @@
 //具体访问地址 https://help.aliyun.com/document_detail/57458.html?spm=a2c4g.11186623.4.5.86125e3cCknci3
 const SMSClient = require('@alicloud/sms-sdk')
 // ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
-const accessKeyId = "LTAIqLIBzSFNAFAH"; // AccessKeyId
-const secretAccessKey = "zOmr8OJjwp5GhU1UC3ptQHY813EAIo"; // AccessKeySecret
+const accessKeyId = "this is a key"; // AccessKeyId
+const secretAccessKey = "this is a key"; // AccessKeySecret
 //初始化sms_client
 let smsClient = new SMSClient({
     accessKeyId,
